@@ -1,0 +1,1 @@
+Interactive rebase (rebase -i) is a feature in Git that allows you to rewrite and clean up your commit history by editing, reordering, squashing, or even removing commits before integrating them into a new base. It gives you much more control over how commits are handled compared to a regular rebase.
