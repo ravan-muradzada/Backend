@@ -1,0 +1,56 @@
+In Java, exceptions are a mechanism to handle runtime errors, making your code more robust and maintainable. They represent an event that disrupts the normal flow of a program's instructions during execution. Java uses exceptions to handle both system errors (like an out-of-bounds array access) and application-specific conditions (like invalid user input).
+
+Java exceptions are divided into three major categories:
+
+1) Checked exceptions:
+These are exceptions that the compiler checks at compile time.
+They must be either caught using a try-catch block or declared in the method signature using the throws keyword.
+
+Common examples include:
+-IOException: Thrown when there are issues with input/output operations.
+-SQLException: Thrown when there is an issue interacting with the database.
+
+2) Unchecked Exceptions (Runtime Exceptions):
+These are not checked at compile time, meaning the compiler doesn’t force you to handle or declare them.
+These are usually programmer errors or logical bugs that can be avoided with better coding practices.
+All unchecked exceptions inherit from the RuntimeException class.
+
+Common examples include:
+-NullPointerException: Thrown when attempting to access an object with a null reference.
+-ArrayIndexOutOfBoundsException: Thrown when accessing an array with an invalid index.
+
+3) Errors:
+These are severe problems, often beyond the control of the program (e.g., hardware or memory failures), and typically shouldn’t be handled by the application.
+They are a subclass of Throwable but are not exceptions. Instead, they indicate critical issues that cannot be typically recovered from.
+
+Common examples include:
+-OutOfMemoryError: Thrown when the JVM runs out of memory.
+-StackOverflowError: Thrown when the call stack overflows, typically due to deep recursion.
+
+---------------------------------------------------
+
+Handling Exceptions
+
+Java provides two primary mechanisms to handle exceptions:
+
+1) try-catch Block: The try block contains code that might throw an exception, while the catch block handles that exception. You can catch specific exceptions or use a generic Exception catch block.
+A finally block can be added to execute code regardless of whether an exception was thrown or not (commonly used for cleanup like closing files or releasing resources).
+
+There might be multiple catch blocks at the same time and for this case, we have some specific rules:
+
+Always place the most specific exceptions (derived classes) before the more general ones (like Exception or Throwable). If you catch a general exception first, it will prevent the more specific ones from being reached, as Java uses the first matching catch block it encounters.
+
+If multiple exceptions are handled similarly, you can catch them in a single catch block by separating the exception types with a pipe (|). This avoids redundant code.
+
+2) throws Keyword: If a method doesn't handle a checked exception, it must declare that exception in its method signature using the throws keyword.
+
+There are both throw and throws keywords. Although they might seem similar, they serve different purposes in Java's exception handling mechanism.
+
+"throw":  Used to actually throw an exception at runtime. It is used within the method body to explicitly throw an exception. When a certain condition is met (like invalid input), you throw an exception using throw. It disrupts the normal flow of the program and transfers control to the nearest matching catch block in the call stack.
+
+"throws": Used in the method signature to declare that a method might throw an exception. It informs the compiler that the method may throw a particular exception, so the caller of the method must handle it, either by catching the exception or by declaring it further.
+
+For checked exceptions, if we do not have "throws" in the side of the method name or try-catch blocks, we cannot use "throw new .." inside the method.
+However, for checked exceptions, we do not need them.
+
+Unchecked exceptions are RuntimeException.
