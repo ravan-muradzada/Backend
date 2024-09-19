@@ -1,0 +1,189 @@
+1. Map Hierarchy in Java
+
+In Java, the Map interface represents a collection of key-value pairs, where each key is unique, and each key maps to at most one value. Unlike the Collection interface (e.g., List, Set), Map does not extend Collection. The primary goal of a Map is to associate keys with values and provide efficient retrieval of values based on keys.
+
+
+2. Overview of Map Implementations
+
+Java provides several implementations of the Map interface, each with its unique characteristics:
+
+    1. HashMap:
+    Underlying Data Structure: Hash Table.
+
+    Characteristics:
+
+    -Allows null keys and values.
+    -Does not guarantee any specific iteration order.
+    -Fast lookup (O(1) average time complexity).
+    -Usage: General-purpose implementation for fast key-value lookups.
+
+    2. LinkedHashMap:
+    Underlying Data Structure: Hash Table + Linked List.
+    
+    Characteristics:
+    
+    -Maintains the insertion order (or access order if specified).
+    -Allows null keys and values.
+    -Slower than HashMap due to maintaining the order.
+    -Usage: When insertion or access order matters.
+
+    3. TreeMap:
+    Underlying Data Structure: Red-Black Tree (Balanced Binary Search Tree).
+    
+    Characteristics:
+    
+    -Implements SortedMap and NavigableMap interfaces.
+    -Maintains keys in sorted order based on natural    ordering or a custom comparator.
+    -Does not allow null keys (but allows null values).
+    O(log n) for operations like get(), put().
+    -Usage: When you need sorted key-value pairs.
+    
+    4. ConcurrentHashMap:
+    Underlying Data Structure: Hash Table with concurrency support.
+
+    Characteristics:
+    
+    -Designed for multi-threaded environments.
+    -Does not allow null keys or values.
+    -Threads can access the map concurrently without locking the entire map.
+    -Usage: In concurrent environments where thread safety is a priority.
+    
+    5. WeakHashMap:
+    Underlying Data Structure: Hash Table with weak references to keys.
+
+    Characteristics:
+    
+    -Automatically removes entries when the key is no longer in use (collected by GC).
+    -Allows null keys and values.
+    -Usage: Useful for memory-sensitive caches where keys should be garbage collected.
+    
+    6. IdentityHashMap:
+    Underlying Data Structure: Hash Table.
+
+    Characteristics:
+    
+    -Uses reference equality (==) instead of equals() for key comparison.
+    -Allows null keys and values.
+    -Usage: For specialized use cases where reference identity is important.
+
+
+3. SortedMap Interface
+
+The SortedMap interface is a subinterface of Map that guarantees that the keys are stored in sorted order. It defines methods for working with sorted keys.
+
+Key Methods:
+
+-Comparator<? super K> comparator(): Returns the comparator used for sorting, or null if using natural ordering.
+
+-K firstKey(): Returns the first (lowest) key.
+
+-K lastKey(): Returns the last (highest) key.
+
+-SortedMap<K, V> headMap(K toKey): Returns a view of the map whose keys are less than toKey.
+
+-SortedMap<K, V> tailMap(K fromKey): Returns a view of the map whose keys are greater than or equal to fromKey.
+
+-SortedMap<K, V> subMap(K fromKey, K toKey): Returns a view of the map whose keys are between fromKey and toKey.
+
+
+4. NavigableMap Interface
+
+NavigableMap extends SortedMap and provides methods for navigation through the map, including retrieving entries based on proximity (closest lower or higher key).
+
+Key Methods:
+
+-Map.Entry<K, V> ceilingEntry(K key): Returns the least key greater than or equal to key, or null if none.
+
+-K floorKey(K key): Returns the greatest key less than or equal to key, or null if none.
+
+-K lowerKey(K key): Returns the greatest key strictly less than key.
+
+-Map.Entry<K, V> pollFirstEntry(): Retrieves and removes the first entry.
+
+-Map.Entry<K, V> pollLastEntry(): Retrieves and removes the last entry.
+
+-NavigableMap<K, V> descendingMap(): Returns a reverse-order view of the map.
+
+
+5. Dictionary Class
+
+The Dictionary class is an obsolete class that was part of the original java.util package. It is abstract and serves as the superclass for classes like Hashtable.
+
+Characteristics:
+
+-Has been replaced by the Map interface.
+
+-Provides methods like put(), get(), remove(), elements(), and keys().
+
+-It is generally advised to use Map and its implementations instead of Dictionary.
+
+
+6. Hashtable vs HashMap
+
+Both Hashtable and HashMap are implementations of the Map interface, but they have important differences:
+
+Hashtable:
+
+-Thread-safe: Methods are synchronized, so it's slower than HashMap.
+
+-No null keys/values: It does not allow null keys or values.
+
+-Legacy class: It’s part of the old Dictionary class hierarchy and is considered obsolete in favor of HashMap.
+
+
+HashMap:
+
+-Not thread-safe: If multiple threads access the map concurrently, external synchronization is required.
+
+-Allows null keys/values: One null key and multiple null values are allowed.
+
+-Modern class: Preferred for general use in non-concurrent scenarios.
+
+
+7. Methods of Map Interface
+
+The Map interface provides the following commonly used methods:
+
+Basic Operations:
+
+-V put(K key, V value): Associates the specified value with the specified key.
+
+-V get(Object key): Returns the value to which the specified key is mapped, or null if none.
+
+-V remove(Object key): Removes the mapping for a key.
+
+-boolean containsKey(Object key): Returns true if the map contains the specified key.
+
+-boolean containsValue(Object value): Returns true if the map contains one or more values equal to the specified value.
+
+-int size(): Returns the number of key-value mappings in the map.
+
+-void clear(): Removes all the mappings from the map.
+
+
+Bulk Operations:
+
+-void putAll(Map<? extends K, ? extends V> m): Copies all mappings from the specified map to this map.
+
+
+Collection Views:
+
+-Set<K> keySet(): Returns a set of the keys contained in the map.
+
+-Collection<V> values(): Returns a collection of the values contained in the map.
+
+-Set<Map.Entry<K, V>> entrySet(): Returns a set of the key-value mappings contained in the map.
+
+
+8. Entry type
+
+Map.Entry is a nested interface within the Map interface that represents a key-value pair (an entry in a map).
+
+Key Methods:
+
+-K getKey(): Returns the key corresponding to this entry.
+
+-V getValue(): Returns the value corresponding to this entry.
+
+-V setValue(V value): Replaces the value associated with the key.
+
