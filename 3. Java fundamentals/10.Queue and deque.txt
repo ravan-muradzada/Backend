@@ -1,0 +1,59 @@
+1. Queue Interface
+
+The Queue interface in Java is part of the java.util package and represents a collection designed for holding elements prior to processing. It typically follows a FIFO (First In, First Out) order, but certain implementations may use different ordering rules.
+
+Common Methods:
+
+-boolean add(E e): Inserts an element into the queue. Throws an exception if the queue is full.
+
+-boolean offer(E e): Inserts an element into the queue. Returns false if the queue is full.
+
+-E remove(): Removes and returns the head of the queue. Throws an exception if the queue is empty.
+
+-E poll(): Removes and returns the head of the queue. Returns null if the queue is empty.
+
+-E element(): Retrieves the head of the queue without removing it. Throws an exception if the queue is empty.
+
+-E peek(): Retrieves the head of the queue without removing it. Returns null if the queue is empty.
+
+
+
+2. Deque Interface
+
+The Deque (pronounced as "deck") interface stands for Double-Ended Queue. It extends the Queue interface and allows elements to be added or removed from both ends (front and back). This makes it more versatile, allowing both FIFO (queue behavior) and LIFO (stack behavior) operations.
+
+Common Methods (in addition to those inherited from Queue):
+
+-void addFirst(E e): Inserts an element at the front.
+
+-void addLast(E e): Inserts an element at the end.
+boolean offerFirst(E e): Inserts an element at the front (returns false if not successful).
+boolean offerLast(E e): Inserts an element at the end (returns false if not successful).
+
+-E removeFirst(): Removes and returns the first element.
+
+-E removeLast(): Removes and returns the last element.
+
+-E peekFirst(): Retrieves the first element without removing it.
+
+-E peekLast(): Retrieves the last element without removing it.
+
+
+
+3. PriorityQueue
+
+PriorityQueue is a special type of queue where the order of elements is determined either by their natural order (for elements that implement Comparable) or by a custom Comparator. The element with the highest priority (smallest or largest) is dequeued first. It doesn’t follow strict FIFO behavior.
+
+Characteristics:
+
+-The head of the queue is the least element in terms of ordering, as determined by either Comparable or Comparator.
+
+-It’s not thread-safe.
+
+-The queue is not necessarily sorted but guarantees that the head element is the smallest.
+
+Time Complexity:
+
+-offer(), poll(), remove(), and add() take O(log n) time.
+-peek() takes O(1) time.
+
