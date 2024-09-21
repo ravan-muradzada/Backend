@@ -1,0 +1,34 @@
+What is a LinkedHashMap?
+
+A LinkedHashMap is a subclass of HashMap in Java that maintains the order of its entries. Unlike HashMap, which does not guarantee any particular order of its entries, LinkedHashMap provides a predictable iteration order by maintaining a doubly linked list of its entries. This allows it to preserve the insertion order (the order in which entries were added) or an access order (the order in which entries were last accessed).
+
+Internally, LinkedHashMap works similarly to a HashMap, using a hash table for storing key-value pairs. However, in addition to the hash table, it also maintains a doubly linked list of entries, which determines the iteration order. This linked list can be maintained either in insertion-order or access-order mode, depending on how the LinkedHashMap is configured.
+
+
+Insertion order and access-order:
+
+LinkedHashMap can operate in two modes:
+
+1) Insertion-order (default):
+    In insertion-order, the entries in the map are iterated in the order they were inserted. Once a key-value pair is inserted, its position in the order is fixed, and it does not change even if the entry is accessed (retrieved) later.
+
+2) Access-order:
+    In access-order, the iteration order of the entries is based on when they were last accessed. Every time you retrieve (or "access") a value using get(), the corresponding entry is moved to the end of the linked list, making it the most recently accessed.
+
+
+------------------------------------------------------
+
+What is cache?
+
+A cache is a storage mechanism that temporarily holds frequently accessed data in memory, making future accesses to that data faster. Caches are often used to store the results of expensive operations or data retrieved from slower storage mediums (e.g., databases, file systems) to improve performance.
+
+
+LinkedHashMap as a Cache:
+
+You can implement a simple cache using LinkedHashMap in access-order mode, where the least recently used (LRU) entries are automatically moved to the start of the map. By overriding the removeEldestEntry() method, you can limit the number of elements in the map and automatically remove the least recently used entries when the cache exceeds a certain size.
+
+
+How to Limit the Number of Elements in LinkedHashMap?
+
+To implement a fixed-size cache, we can override the removeEldestEntry method to define when the oldest entry should be removed.
+
