@@ -1,0 +1,221 @@
+Part 2: Java Collections Framework Interview - Questions and Answers
+COMPARE ENUMERATION AND ITERATOR.
+
+
+
+Both interfaces are designed to traverse collections. The Iterator interface was introduced somewhat later in the Java Collections Framework and is preferred.
+
+
+
+The main differences between Iterator and Enumeration are:
+
+the presence of the remove() method to remove an element from the collection during traversal;
+
+different method names to improve code readability.
+
+
+
+
+
+HOW ARE ITERABLE AND ITERATOR RELATED TO EACH OTHER?
+
+
+
+The Iterable interface has only one method, iterator() , which returns an iterator of the collection to traverse it.
+
+
+
+
+
+HOW MANY MEMORY ITEMS ARE ALLOCATED WHEN ARRAYLIST.ADD() is called?
+
+
+
+If there is enough space in the array to accommodate the new element, no additional memory space is allocated. Otherwise, a new array is created.
+
+
+
+A new array is created, the size of which is calculated as multiplying the old size by 1.5 (this is true starting from JDK 1.7, in earlier versions the calculations are different).
+
+
+
+COMPARE ITERATOR AND LISTITERATOR.
+
+
+
+ListIterator extends the Iterator interface to allow the client to traverse the collection in both directions, modify the collection, and get the iterator's current position.
+
+
+
+It is important to remember that the ListIterator does not point to a specific element, but its current position is between the elements returned by the previous() and next() methods. Thus, the modification of the collection is carried out for the last element returned by the previous() and next() methods.
+
+
+
+
+
+WHAT WILL HAPPEN IF I CALL ITERATOR.NEXT() WITHOUT "ASKING" ITERATOR.HASNEXT()?
+
+
+
+If the iterator points to the last element of the collection, then a NoSuchElementException will be thrown, otherwise the next element will be returned.
+
+
+
+
+
+IF I HAVE A COLLECTION AND A GENERATED ITERATOR, WILL THE COLLECTION CHANGE IF I CALL ITERATOR.REMOVE()?
+
+
+
+The iterator.remove() method can only be called after the iterator.next() method has been called at least once, otherwise, an IllegalStateException() will be thrown.
+
+
+
+If iterator.next() has been called before, then iterator.remove() will remove the element pointed to by the iterator.
+
+
+
+
+
+IF I HAVE A COLLECTION AND A GENERATED ITERATOR, WILL THE ITERATOR CHANGE IF I CALL COLLECTION.REMOVE(..)?
+
+
+
+The iterator will not change, but the next time its methods are called, a ConcurrentModificationException will be thrown telling you that somebody adjust structure of the collection.
+
+
+
+There are fail-fast and fail-safe iterators. Fail-safe iterator will not throw ConcurrentModificationException.
+
+
+
+
+
+IS LINKEDLIST A SINGLE-LINKED, DOUBLE-LINKED, OR FOUR-LINKED LIST?
+
+
+
+Doubly Linked List: Each element of a LinkedList stores a link to the previous and next elements.
+
+
+
+
+
+
+
+
+
+WHAT IS THE WORST TIME OF THE CONTAIN() METHOD FOR AN ELEMENT THAT IS IN A LINKEDLIST (O(1), O(LOG(N)), O(N), O(N*LOG(N)), O(N*N) )?
+
+
+
+O(N). The search time for an element is linearly proportional to the number of elements in the list.
+
+
+
+
+
+WHAT IS THE WORST TIME OF THE CONTAIN() METHOD FOR AN ELEMENT THAT IS IN ARRAYLIST (O(1), O(LOG(N)), O(N), O(N*LOG(N)), O(N*N) )?
+
+
+
+O(N). The search time for an element is linearly proportional to the number of elements in the list.
+
+
+
+
+
+WHAT IS THE WORST ADD() TIME FOR LINKEDLIST (O(1), O(LOG(N)), O(N), O(N*LOG(N)), O(N*N))?
+
+
+
+O(N). It is worth noting here that adding an element to the end of the list using the add(value), addLast(value) method and adding to the beginning of the list using addFirst(value) takes O(1) time.
+
+O(N) - will be when adding an element to a sorted list, as well as when adding an element using the add(index, value) method.
+
+
+
+
+
+WHAT IS THE WORST ADD() TIME FOR ARRAYLIST (O(1), O(LOG(N)), O(N), O(N*LOG(N)), O(N*N))?
+
+
+
+O(N). Inserting an element at the end of the list takes O(1) time, but if the array capacity is insufficient, then a new array with an increased size is created and all elements from the old array are copied to the new one.
+
+
+
+
+
+
+
+
+
+HOW MANY MEMORY ITEMS ARE ALLOCATED WHEN LINKEDLIST.ADD() is called?
+
+
+
+One new instance of the nested Node class is created.
+
+
+
+
+
+ESTIMATE THE MEMORY TO STORAGE ONE BYTE PRIMITIVE IN LINKEDLIST?
+
+
+
+Each LinkedList element stores a link to the previous element, the next element, and a link to the data. For x32 systems, each link is 32 bits (4 bytes). The Node itself is approximately 8 bytes. The size of each object in Java is a multiple of 8, so we get 24 bytes. A primitive of type byte occupies 1 byte of memory, but primitives are packed in the list, respectively, we get another 8 bytes. Thus, in the x32 JVM, about 32 bytes are allocated to store a single byte value in a LinkedList.
+
+
+
+For a 64-bit JVM, each link is 64 bits (8 bytes). The calculations are similar.
+
+
+
+
+
+ESTIMATE THE AMOUNT OF MEMORY TO STORAGE ONE PRIMITIVE OF TYPE BYTE IN ARRAYLIST?
+
+
+
+ArrayList is array based. Each element of the array stores a primitive data type - byte, the size of which is 1 byte.
+
+
+
+
+
+I ADD AN ELEMENT IN THE MIDDLE OF LIST: LIST.ADD(LIST.SIZE()/2, NEWELEM). FOR WHOM IS THIS OPERATION SLOWER - FOR ARRAYLIST OR FOR LINKEDLIST?
+
+
+
+For ArrayList:
+
+checking an array for capacity. If there is not enough capacity, then increase the size of the array and copy all the elements into a new array ( O(N) );
+
+copying all elements to the right of the insertion position one position to the right ( O(N/2));
+
+element insertion ( O(1) ).
+
+
+
+For Linked List:
+
+find insertion position ( O(N/2) );
+
+element insertion ( O(1) ).
+
+
+
+In the worst case, inserting in the middle of the list is more efficient for LinkedList. In the rest - most likely for ArrayList, since elements are copied using the System.arraycopy() system method.
+
+
+
+
+
+HOW TO LOOK AT LINKEDLIST ELEMENTS IN REVERSE ORDER WITHOUT USING SLOW GET(INDEX)?
+
+
+
+Use a reverse iterator. To do this, LinkedList has a descendingIterator() method.
+

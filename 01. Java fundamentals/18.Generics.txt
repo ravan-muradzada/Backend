@@ -1,0 +1,180 @@
+Why Do We Need Generics?
+
+Generics in Java were introduced to provide type safety and code reusability. Before generics, collections like ArrayList could hold objects of any type, which led to potential runtime errors. Generics enable:
+
+-Type Safety: Ensures that code fails at compile time rather than at runtime by specifying the types allowed.
+-Code Reusability: Allows writing generalized code that can handle different types without typecasting.
+
+
+Generics in Java
+
+Generics allow you to define classes, interfaces, and methods with type parameters, meaning you can work with any object type in a type-safe manner.
+
+======================================================
+
+class Box<T> {
+    private T item;
+
+    public void setItem(T item) {
+        this.item = item;
+    }
+
+    public T getItem() {
+        return item;
+    }
+}
+
+======================================================
+
+
+Diamond operator
+
+The diamond operator (<>) was introduced in Java 7 to simplify the use of generics. It allows you to avoid redundant type declarations by inferring the generic type based on the context.
+
+
+How Generics Work?
+
+Generics are implemented through type erasure (more on this later). This means that during compilation, all generic type information is removed, and the compiler inserts type casts where necessary. While the code appears type-safe to the programmer, the underlying bytecode is the same as before generics were introduced.
+
+
+Generic methods
+
+A generic method allows you to define a method with type parameters, independent of whether the class itself is generic.
+
+======================================================
+
+public <T> void printArray(T[] array) {
+    for (T element : array) {
+        System.out.println(element);
+    }
+}
+
+======================================================
+
+This method can handle arrays of any type (Integer[], String[], etc.).
+
+
+Generic Class
+A generic class allows you to define a class that works with any type.
+
+======================================================
+
+class Box<T> {
+    private T item;
+
+    public void setItem(T item) {
+        this.item = item;
+    }
+
+    public T getItem() {
+        return item;
+    }
+}
+
+======================================================
+
+
+Generics in Java provide a powerful way to write reusable and type-safe code. They allow you to define classes, interfaces, and methods with type parameters, making your code more flexible. One key feature of generics is wildcards, which come in two main forms: `extends` and `super`.
+
+The `extends` wildcard (`? extends T`) restricts the generic type to a specific class (`T`) or any of its subclasses. This is useful when you need to read from a collection, but you don't know the exact type. You can be sure that the elements are at least of type `T` or something derived from `T`, allowing you to call methods from `T` safely. However, since the exact type is unknown, you cannot add elements to the collection except `null`.
+
+On the other hand, the `super` wildcard (`? super T`) restricts the generic type to `T` or any of its superclasses. This is useful when you want to write to a collection, ensuring that any element you add is at least of type `T`. But when you retrieve an element from a `List<? super T>`, it’s treated as `Object`, because the list might hold objects of any superclass of `T`. You can call methods on the retrieved elements only after performing a cast based on their actual type (using `instanceof`).
+
+For example, in `List<? extends Parent>`, you can read elements of type `Parent` or its subclasses (`Child`, `ChildOfChild`), but you cannot add any elements. Conversely, in `List<? super ChildOfChild>`, you can add `ChildOfChild` elements, but when you retrieve them, you must treat them as `Object` and cast them back to their actual type.
+
+In practice, these wildcards help ensure flexibility in method arguments, allowing collections to accept a wider range of types while maintaining type safety. This is especially important when using methods like `add()` and `get()`, which need to respect the type bounds imposed by the wildcard.
+
+Finally, bounded generics using `<T extends Parent>` or `<T super ChildOfChild>` define constraints directly on type parameters. This provides more control over the types allowed when creating generic classes or methods, ensuring the code is both flexible and safe at compile time. The diamond operator (`<>`) simplifies generic instantiation by inferring the type parameters, reducing redundancy and making code cleaner.
+
+======================================================
+
+public static<T> void doit1(List<? super ChildOfChild> l){
+        if (l.get(0) instanceof ChildOfChild){
+            ((ChildOfChild) l.get(0)).sayCC();
+            ((ChildOfChild) l.get(0)).sayC();
+            ((ChildOfChild) l.get(0)).sayP();
+            l.add(new ChildOfChild());
+        }else if (l.get(0) instanceof Child){
+            ((Child) l.get(0)).sayC();
+            ((Child) l.get(0)).sayP();
+        }else {
+            ((Parent) l.get(0)).sayP();
+            l.add(new ChildOfChild());
+        }
+        l.add(new ChildOfChild()); // true
+        l.add(new Child()); // false
+        l.add(new Parent()); // false
+    }
+
+
+    public static void doSmth3(List<? extends Parent> l){
+        l.get(0).sayP();
+
+        if (l.get(0) instanceof ChildOfChild) {
+            ((ChildOfChild) l.get(0)).sayCC();
+            ((ChildOfChild) l.get(0)).sayC();
+            ((ChildOfChild) l.get(0)).sayP();
+        }else if (l.get(0) instanceof Child){
+            ((Child) l.get(0)).sayC();
+            ((Child) l.get(0)).sayP();
+        }else{
+            l.get(0).sayP();
+        }
+        
+        l.add(...); // Adding anything is false
+    }
+    
+    public static<T> void doSmth(List<? extends Parent> l){
+        l.get(0).sayP();
+        
+        if (l.get(0) instanceof ChildOfChild) {
+            ((ChildOfChild) l.get(0)).sayCC();
+            ((ChildOfChild) l.get(0)).sayC();
+            ((ChildOfChild) l.get(0)).sayP();
+        }else if (l.get(0) instanceof Child){
+            ((Child) l.get(0)).sayC();
+            ((Child) l.get(0)).sayP();
+        }else{
+            l.get(0).sayP();
+        }
+        l.add(...); // Adding anything is false
+    }
+
+    public static<T extends Parent> void doSmth2(List<T> l){
+        l.get(0).sayP();
+
+        if (l.get(0) instanceof ChildOfChild) {
+            ((ChildOfChild) l.get(0)).sayCC();
+            ((ChildOfChild) l.get(0)).sayC();
+            ((ChildOfChild) l.get(0)).sayP();
+        }else if (l.get(0) instanceof Child){
+            ((Child) l.get(0)).sayC();
+            ((Child) l.get(0)).sayP();
+        }else{
+            l.get(0).sayP();
+        }
+        l.add(l.get(0)); // Adding the previous object is true
+        l.add(new ...()); // Adding new Object is false
+    }
+
+======================================================
+
+-------------------------------------------------------
+
+Raw Types
+
+Before generics, classes like List and Map could hold any type of object. Using such classes without specifying a generic type is called using raw types:
+List list = new ArrayList();  // Raw type
+
+Raw types are unsafe because you lose the type-checking benefits of generics and may run into runtime errors.
+
+
+Type Erasure
+
+Java uses type erasure to implement generics. This means that:
+
+-At compile-time, the generic type information is used for type-checking and enforcement of type safety.
+-At runtime, the generic type information is erased and replaced with Object or the first bound of the type parameter.
+
+Type erasure ensures backward compatibility with older versions of Java that didn’t have generics.
+
