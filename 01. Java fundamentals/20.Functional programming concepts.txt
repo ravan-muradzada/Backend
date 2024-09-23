@@ -1,0 +1,65 @@
+What is Functional Programming?
+
+Functional programming (FP) is a programming paradigm that treats computation as the evaluation of mathematical
+functions. It emphasizes the application of functions, rather than changing the state of data. This approach promotes immutability, which is a key concept in FP.   
+
+
+Main Concepts of Functional Programming:
+
+-Immutability: Data structures are typically considered immutable, meaning their values cannot be changed once created.
+-Pure Functions: Functions should have no side effects, meaning they don't modify external state. They always produce the same output for the same input.
+-Higher-Order Functions: Functions can be passed as arguments to other functions or returned as results.
+-Recursion: Functional programs often use recursion to solve problems, rather than iterative loops.
+-Lazy Evaluation: Expressions are evaluated only when their results are needed.
+
+
+Pros and Cons of Functional Programming:
+
+Pros:
+
+-Readability: Functional code can be more concise and easier to understand due to its declarative nature.
+-Reliability: Immutability helps prevent unintended side effects and makes it easier to reason about code.
+-Parallelism: Functional programming can be well-suited for parallel execution, as pure functions don't have shared state.
+-Testing: Unit testing can be simpler due to the lack of side effects.
+
+
+Cons:
+
+-Learning Curve: Functional programming can have a steeper learning curve for developers accustomed to imperative programming.
+-Performance: In some cases, functional programs might have slightly lower performance compared to imperative counterparts.
+-Tooling: While functional programming is gaining popularity, tooling and libraries might not be as mature in some languages as for imperative programming.
+
+
+
+Imperative vs. Declarative Programming
+
+-Imperative Programming: Focuses on how to achieve a result by specifying a sequence of steps.
+-Declarative Programming: Focuses on what the result should be, rather than how to achieve it. Functional programming is a declarative paradigm.
+
+
+
+Function vs. Method
+
+-Function: A self-contained unit of code that takes input, performs a computation, and returns an output. It doesn't have a specific association with an object.
+-Method: A function that is associated with a particular object. It can access and modify the object's properties.
+
+
+
+Functional Programming in Java
+
+Java has increasingly embraced functional programming concepts, especially with the introduction of features like lambdas, streams, and the java.util.function package. These features allow for a more functional style of programming in Java.
+
+
+
+The java.util.function Package
+
+This package provides a set of functional interfaces that represent common function types, such as:
+
+-Consumer: Represents an operation that accepts a single input argument and returns no result.
+-Supplier: Represents a supplier of results.
+-Function: Represents a function that accepts one argument and produces one result.
+-Predicate: Represents a predicate (boolean-valued function) that accepts one argument.
+-BiConsumer: Represents an operation that accepts two input arguments and returns no result.
+-BiFunction: Represents a function that accepts two arguments and produces one result.
+
+These interfaces are essential for using functional programming constructs in Java, such as lambdas and streams.
