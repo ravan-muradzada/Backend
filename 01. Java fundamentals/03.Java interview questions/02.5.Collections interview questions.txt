@@ -1,0 +1,111 @@
+Part 5: Java Collections Framework Interview - Questions and Answers
+WHICH COLLECTION IMPLEMENTS THE FIFO APPROACH?
+
+
+
+FIFO - First-In-First-Out (first in, first out). Such a data structure as a queue (java.util.Queue) is usually built according to this principle.
+
+
+
+
+
+JAVA.UTIL.STACK - CONSIDERED "DEPRECATED". WHAT IS IT RECOMMENDED TO REPLACE IT? WHY?
+
+
+
+It is recommended to use the Deque ("Dec", Double Ended Queue) interface and its implementations.
+
+
+
+A stack is a data structure based on the LIFO (Last-In-First-Out, or FILO) principle. Each new value is added to the "top" of the stack, and the last added element (from the "top" of the stack) is retrieved. When an element is retrieved, it is removed from the data structure.
+
+
+
+The Stack class appeared in JDK 1.0 and extends the Vector class, inheriting its functionality, which somewhat violates the concept of a stack (for example, the Vector class provides the ability to access any element by index). Also, the use of Deque allows you to follow the principle of programming at the level of interfaces, rather than specific implementations, which facilitates further support of the developed class and increases its flexibility, allowing you to change the deque implementation to the desired one if necessary.
+
+
+
+
+
+
+
+LINKEDHASHMAP - WHAT IS ANOTHER "BEAST"? WHAT'S IN IT FROM LINKEDLIST AND WHAT'S FROM HASHMAP?
+
+
+
+The implementation of LinkedHashMap differs from HashMap by supporting a doubly linked list that determines the order of iteration over the elements of the data structure. By default, the elements of the list are ordered according to their insertion order in the LinkedHashMap (insertion-order). However, the iteration order can be changed by setting the accessOrder constructor parameter to true. In this case, access is carried out in the order of the last access to the element (access-order). This means that when the get() or put() methods are called, the element being accessed is moved to the end of the list.
+
+
+
+When adding an element that is already present in the LinkedHashMap (i.e. with the same key), the iteration order over the elements does not change.
+
+
+
+
+
+CAN WE MAKE A SIMPLE CACHE WITH “INVALIDATION POLICY” ON LINKEDHASHMAP. DO YOU KNOW HOW?
+
+
+
+You need to use the LRU algorithm (Least Recently Used algorithm) and LinkedHashMap with access-order. In this case, when an element is accessed, it will move to the end of the list, and the least used elements will be gradually grouped at the beginning of the list.
+
+
+
+To do this, the standard implementation of LinkedHashMap (source) has a method
+
+removeEldestEntries() which returns true if the current object is a LinkedHashMap
+
+should remove the least used element from the collection. The method is called when using the put() and putAll() methods.
+
+
+
+To implement a simple example of a cache with clearing old values ​​when a specified threshold is exceeded we need to declare a new class and extend it from the LinkedHashMap. After that, we need to override removeEldestEntry() method in order to return true when size reaches max allowed entries. Max allowed entries can be configured during the cache instantiation.
+
+
+
+It is worth noting that LinkedHashMap does not allow to fully implement the LRU algorithm, since when inserting an element already in the collection, the iteration order does not change.
+
+
+
+
+
+
+
+
+
+LINKEDHASHSET - WHAT IS ANOTHER "BEAST"? WHAT'S IN IT FROM LINKEDLIST AND WHAT'S FROM HASHSET?
+
+
+
+The implementation of LinkedHashSet differs from HashSet by supporting a doubly linked list that determines the order of iteration over the elements of the data structure. The elements of the list are ordered according to their insertion order in the LinkedHashSet (insertion-order).
+
+
+
+When adding an element that is already present in the LinkedHashSet (i.e. with the same key), the iteration order over the elements does not change.
+
+
+
+
+
+WHAT DOES PRIORITYQUEUE DO?
+
+
+
+PriorityQueue is a data structure that arranges elements in natural order, or using a Comparator passed to the constructor.
+
+
+
+We can use it to store objects according to their priority: for example, sorting doctor's patients - emergency patients are moved to the front of the queue, less urgent patients - closer to the end of the queue.
+
+
+
+
+
+WHAT IS JAVA.UTIL.COMPARATOR DIFFERENT FROM JAVA.LANG.COMPARABLE?
+
+Interface Comparable sets a comparison property to the object that implements it. That is, it makes the object comparable (according to the developer's rules).
+
+
+
+Interface Comparator allows you to create objects that will control the comparison process (for example, when sorting).
+

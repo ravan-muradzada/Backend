@@ -1,0 +1,374 @@
+Part 1: Java Collections Framework Interview - Questions and Answers
+WHAT IS A COLLECTION?
+
+
+
+Collections are containers that support various ways of storing and organizing objects in order to be able to access them efficiently. They are implementations of abstract data structures that support three basic operations:
+
+adding a new element to the collection;
+
+removing an element from the collection;
+
+changing an element in the collection.
+
+
+
+
+
+NAME THE MAIN INTERFACES OF COLLECTIONS AND THEIR IMPLEMENTATIONS.
+
+Part 1: Java Collections Framework Interview - Questions and Answers
+WHAT IS A COLLECTION?
+
+
+
+Collections are containers that support various ways of storing and organizing objects in order to be able to access them efficiently. They are implementations of abstract data structures that support three basic operations:
+
+adding a new element to the collection;
+
+removing an element from the collection;
+
+changing an element in the collection.
+
+
+
+
+
+NAME THE MAIN INTERFACES OF COLLECTIONS AND THEIR IMPLEMENTATIONS.
+
+
+
+Three interfaces extend Collection: List, Set, Queue.
+
+
+
+List - stores ordered elements (may be the same); Has such implementations as LinkedList, ArrayList, Vector, etc.
+
+Vector is synchronized, and therefore in one thread, it works slower than other implementations.
+
+ArrayList has advantage in navigating through the collection.
+
+LinkedList has advantage is in inserting and deleting elements in a collection.
+
+
+
+Set - collections that do not contain duplicate elements. Main implementations: HashSet, TreeSet, LinkedHashSet
+
+TreeSet - arranges elements by their values;
+
+HashSet - Orders the elements by their hash keys, although at first glance it may seem that the elements are stored in random order.
+
+LinkedHashSet - stores elements in the order they were added
+
+
+
+Queue is an interface for implementing a queue in Java. Main implementations: LinkedList, PriorityQueue.
+
+Queues work on the principle of FIFO - first in first out.
+
+
+
+Map is an interface for implementing a so-called map, where elements are stored with their keys. Main implementations: HashTable, HashMap, TreeMap, LinkedHashMap
+
+HashTable - synchronized, deprecated.
+
+HashMap - the order of the elements is calculated by the hash key;
+
+TreeMap - elements are stored in sorted order
+
+LinkedHashMap - elements are stored in insertion order
+
+
+
+Keys in Mar cannot be the same!
+
+
+
+You can synchronize unsynchronized collections and maps using the Collections.synchronizedMap(myMap) / synchronizedList(myList) class.
+
+
+
+
+
+
+
+HOW IS ARRAYLIST DIFFERENT FROM LINKEDLIST? IN WHAT CASES IS IT BETTER TO USE THE FIRST AND IN WHICH CASES THE SECOND?
+
+
+
+The difference lies in the way the data is stored. ArrayList stores data as an array, while LinkedList stores as a list (bidirectional).
+
+
+
+Reading and retrieving data from the ArrayList is generally faster because we have access to the elements by index.
+
+
+
+With a large number of add and remove operations, LinkedList should be a better choice, because these operations do not have to move parts of the array.
+
+
+
+
+
+HOW IS HASHMAP DIFFERENT FROM HASHTABLE?
+
+
+
+The HashMap class is very similar in functionality to the Hashtable. The main difference is that the methods of the Hashtable class are synchronized, while the HashMap is not. In addition, the HashMap class, unlike the Hashtable, allows the use of null as keys and values.
+
+
+
+
+
+The presence of synchronization in the Hashtable reduces the performance of the code that uses this class. Therefore, the JCF (Java Collections Framework, introduced in Java 2) classes, including HashMap, are not synchronized. If you still need synchronization, you can use the methods of the Collections class: Collections.synchronizedMap(map), Collections.synchronizedList(list), or Collections.synchronizedSet(set) to wrap your objects into the synchronized wrapper.
+
+
+
+These methods return a synchronized decorator for the passed collection.
+
+
+
+Starting with Java 6, JCF has been extended with special collections that support multi-threaded access, such as CopyOnWriteArrayList and ConcurrentHashMap.
+
+
+
+
+
+HOW IS ARRAYLIST DIFFERENT FROM VECTOR?
+
+
+
+The methods of the Vector class are synchronized while the ArrayList is not.
+
+
+
+
+
+
+
+
+
+WHY MAP IS NOT A COLLECTION WHILE LIST AND SET ARE A COLLECTION?
+
+
+
+A collection (List and Set) is a collection of some elements (usually instances of the same class). Map is a collection of key-value pairs.
+
+
+
+Accordingly, some methods of the Collection interface cannot be used in Map. For example, the remove(Object o) method in the Collection interface is designed to remove an element, while the same remove(Object key) method in the Map interface removes an element by a given key.
+
+
+
+So, the way how data is structured in Map and Collection is different. That’s why we can’t say that Map is a collection.
+
+
+
+
+
+GIVE A DEFINITION TO THE TERM "ITERATOR".
+
+
+
+An iterator is an object that allows you to iterate over the elements of a collection. The Iterator declares interface that is used to iterate over different types of data structures. For example, foreach is implemented using an iterator. One of the key methods of the Collection interface is the Iterator<E> iterator() method. It returns an iterator - that is, an object that implements the Iterator interface. Each concrete implementation knows how to iterate over the specific data structure.
+
+
+
+
+
+HOW TO LOOK AT ALL THE KEYS OF A MAP, CONSIDERING THAT MAP IS NOT ITERABLE?
+
+
+
+Use the keySet() method, which returns a set (Set<K>) of keys.
+
+
+
+
+
+HOW TO LOOK AT ALL THE MAP VALUES, CONSIDERING THAT MAP IS NOT ITERABLE?
+
+
+
+Use the values() method, which returns a collection (Collection<V>) of values.
+
+
+
+
+
+HOW TO LOOK AT ALL KEY-VALUE PAIRS IN A MAP, CONSIDERING THAT MAP IS NOT ITERABLE?
+
+
+
+Use the entrySet() method, which returns a set (Set<Map.Entry<K, V>) of key-value pairs.
+
+
+
+
+
+Three interfaces extend Collection: List, Set, Queue.
+
+
+
+List - stores ordered elements (may be the same); Has such implementations as LinkedList, ArrayList, Vector, etc.
+
+Vector is synchronized, and therefore in one thread, it works slower than other implementations.
+
+ArrayList has advantage in navigating through the collection.
+
+LinkedList has advantage is in inserting and deleting elements in a collection.
+
+
+
+Set - collections that do not contain duplicate elements. Main implementations: HashSet, TreeSet, LinkedHashSet
+
+TreeSet - arranges elements by their values;
+
+HashSet - Orders the elements by their hash keys, although at first glance it may seem that the elements are stored in random order.
+
+LinkedHashSet - stores elements in the order they were added
+
+
+
+Queue is an interface for implementing a queue in Java. Main implementations: LinkedList, PriorityQueue.
+
+Queues work on the principle of FIFO - first in first out.
+
+
+
+Map is an interface for implementing a so-called map, where elements are stored with their keys. Main implementations: HashTable, HashMap, TreeMap, LinkedHashMap
+
+HashTable - synchronized, deprecated.
+
+HashMap - the order of the elements is calculated by the hash key;
+
+TreeMap - elements are stored in sorted order
+
+LinkedHashMap - elements are stored in insertion order
+
+
+
+Keys in Mar cannot be the same!
+
+
+
+You can synchronize unsynchronized collections and maps using the Collections.synchronizedMap(myMap) / synchronizedList(myList) class.
+
+
+
+
+
+
+
+HOW IS ARRAYLIST DIFFERENT FROM LINKEDLIST? IN WHAT CASES IS IT BETTER TO USE THE FIRST AND IN WHICH CASES THE SECOND?
+
+
+
+The difference lies in the way the data is stored. ArrayList stores data as an array, while LinkedList stores as a list (bidirectional).
+
+
+
+Reading and retrieving data from the ArrayList is generally faster because we have access to the elements by index.
+
+
+
+With a large number of add and remove operations, LinkedList should be a better choice, because these operations do not have to move parts of the array.
+
+
+
+
+
+HOW IS HASHMAP DIFFERENT FROM HASHTABLE?
+
+
+
+The HashMap class is very similar in functionality to the Hashtable. The main difference is that the methods of the Hashtable class are synchronized, while the HashMap is not. In addition, the HashMap class, unlike the Hashtable, allows the use of null as keys and values.
+
+
+
+
+
+The presence of synchronization in the Hashtable reduces the performance of the code that uses this class. Therefore, the JCF (Java Collections Framework, introduced in Java 2) classes, including HashMap, are not synchronized. If you still need synchronization, you can use the methods of the Collections class: Collections.synchronizedMap(map), Collections.synchronizedList(list), or Collections.synchronizedSet(set) to wrap your objects into the synchronized wrapper.
+
+
+
+These methods return a synchronized decorator for the passed collection.
+
+
+
+Starting with Java 6, JCF has been extended with special collections that support multi-threaded access, such as CopyOnWriteArrayList and ConcurrentHashMap.
+
+
+
+
+
+HOW IS ARRAYLIST DIFFERENT FROM VECTOR?
+
+
+
+The methods of the Vector class are synchronized while the ArrayList is not.
+
+
+
+
+
+
+
+
+
+WHY MAP IS NOT A COLLECTION WHILE LIST AND SET ARE A COLLECTION?
+
+
+
+A collection (List and Set) is a collection of some elements (usually instances of the same class). Map is a collection of key-value pairs.
+
+
+
+Accordingly, some methods of the Collection interface cannot be used in Map. For example, the remove(Object o) method in the Collection interface is designed to remove an element, while the same remove(Object key) method in the Map interface removes an element by a given key.
+
+
+
+So, the way how data is structured in Map and Collection is different. That’s why we can’t say that Map is a collection.
+
+
+
+
+
+GIVE A DEFINITION TO THE TERM "ITERATOR".
+
+
+
+An iterator is an object that allows you to iterate over the elements of a collection. The Iterator declares interface that is used to iterate over different types of data structures. For example, foreach is implemented using an iterator. One of the key methods of the Collection interface is the Iterator<E> iterator() method. It returns an iterator - that is, an object that implements the Iterator interface. Each concrete implementation knows how to iterate over the specific data structure.
+
+
+
+
+
+HOW TO LOOK AT ALL THE KEYS OF A MAP, CONSIDERING THAT MAP IS NOT ITERABLE?
+
+
+
+Use the keySet() method, which returns a set (Set<K>) of keys.
+
+
+
+
+
+HOW TO LOOK AT ALL THE MAP VALUES, CONSIDERING THAT MAP IS NOT ITERABLE?
+
+
+
+Use the values() method, which returns a collection (Collection<V>) of values.
+
+
+
+
+
+HOW TO LOOK AT ALL KEY-VALUE PAIRS IN A MAP, CONSIDERING THAT MAP IS NOT ITERABLE?
+
+
+
+Use the entrySet() method, which returns a set (Set<Map.Entry<K, V>) of key-value pairs.
+
+
+
