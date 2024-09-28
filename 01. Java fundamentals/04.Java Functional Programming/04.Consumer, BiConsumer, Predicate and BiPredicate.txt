@@ -28,8 +28,12 @@ forEachRemaining() is a default method in the Iterator interface that performs a
 List<String> list = Arrays.asList("Apple", "Banana", "Cherry");
 Iterator<String> iterator = list.iterator();
 
-iterator.next();  // Skips "Apple"
-iterator.forEachRemaining(System.out::println);  // Output: Banana, Cherry
+iterator.forEachRemaining(System.out::println);  // Output: Apple, Banana, Cherry
+
+// Instead we can write it also like this:
+iterator.forEachRemaining(fruit->{
+    System.out.println(fruit);
+});
 =======================================================
 
 forEachRemaining(Consumer<? super E> action): Performs the action on each remaining element.
