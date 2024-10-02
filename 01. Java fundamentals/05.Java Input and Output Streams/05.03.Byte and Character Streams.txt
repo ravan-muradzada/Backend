@@ -1,0 +1,41 @@
+In Java, streams are used to read and write data. There are two main categories of streams based on the type of data they handle: Byte Streams and Character (Char) Streams.
+
+1. Binary Streams
+
+Byte streams are used to read and write raw binary data (i.e., a sequence of bytes) such as images, audio, videos, or files that are not necessarily text. They handle data byte by byte (8-bit chunks) and are typically used for files or network input/output that involve binary data.
+
+Common Classes:
+-InputStream: The abstract superclass for all classes representing an input byte stream.
+-OutputStream: The abstract superclass for all classes representing an output byte stream.
+
+When to Use Byte Streams:
+
+-When working with binary data (e.g., images, videos, and audio files).
+-When reading or writing non-text data.
+-For applications that need to work with low-level, byte-oriented operations.
+
+
+3. Character Streams
+
+Character streams are used to read and write text data (characters, strings). They handle data character by character and use 16-bit Unicode characters. This makes them ideal for working with textual data like .txt files or any other human-readable text format.
+
+Common Classes:
+
+-Reader: The abstract superclass for all classes representing an input character stream.
+-Writer: The abstract superclass for all classes representing an output character stream.
+
+When to Use Char Streams:
+
+-When working with textual data (e.g., .txt files, XML, JSON).
+-For applications that need to read or write human-readable text.
+-When encoding or decoding data as characters, especially in different languages (due to Unicode support).
+
+
+
+-----------------------------------------------------
+
+
+Buffered Streams (for Efficiency):
+
+Both byte and character streams can be buffered for improved performance using BufferedInputStream and BufferedReader for input, and BufferedOutputStream and BufferedWriter for output. Buffered streams read chunks of data into memory, which reduces the number of times they interact with the underlying data source (like a file), thus speeding up the process.
+
