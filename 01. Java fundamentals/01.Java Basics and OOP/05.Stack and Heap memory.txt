@@ -1,0 +1,19 @@
+Stack and Heap are two areas of memory in Java with different purposes:
+
+1. Stack Memory:
+
+-Stores method calls and local variables.
+-Each method call creates a "stack frame" to keep track of its variables and execution order.
+-Fast but limited in size.
+-Memory is automatically freed when a method finishes.
+
+2. Heap Memory
+
+-Stores objects and global variables.
+-Shared across all parts of the program.
+-Larger but slower to access than the stack.
+-Managed by Garbage Collection, which removes unused objects.
+
+
+Stack: Short-term, for methods and variables.
+Heap: Long-term, for objects and shared data.
