@@ -1,0 +1,13 @@
+The SOLID principles are a set of five design principles intended to make software designs more understandable, flexible, and maintainable. They are widely adopted in object-oriented programming to enhance the quality of code. The acronym SOLID stands for:
+
+1. **Single Responsibility Principle (SRP):** A class should have only one reason to change, meaning it should have only one responsibility or job. This ensures that each class is focused on a single aspect of the functionality, making the code easier to maintain and understand.
+
+2. **Open/Closed Principle (OCP):** Software entities such as classes, modules, and functions should be open for extension but closed for modification. This means that you should be able to extend the behavior of a class without modifying its existing code, which promotes code reuse and reduces the risk of introducing bugs when changes are made.
+
+3. **Liskov Substitution Principle (LSP):** Objects of a superclass should be replaceable with objects of a subclass without affecting the correctness of the program. This principle ensures that a subclass can stand in for its superclass without causing unexpected behavior, promoting reliable inheritance hierarchies.
+
+4. **Interface Segregation Principle (ISP):** Clients should not be forced to depend on interfaces they do not use. This principle advocates for designing small, specific interfaces rather than large, general ones, ensuring that implementing classes are only required to provide the functionality they actually need.
+
+5. **Dependency Inversion Principle (DIP):** High-level modules should not depend on low-level modules; both should depend on abstractions. Additionally, abstractions should not depend on details; details should depend on abstractions. This principle encourages the use of abstractions (like interfaces) to reduce the coupling between different parts of the system, making the system more flexible and easier to modify.
+
+Together, these principles help in designing systems that are more modular, easier to test, and adaptable to change. They guide developers in creating software that is robust, maintainable, and scalable by promoting clear, well-defined responsibilities and reducing dependencies.

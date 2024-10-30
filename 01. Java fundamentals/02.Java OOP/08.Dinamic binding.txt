@@ -1,0 +1,9 @@
+Dynamic binding in Java is a concept where the method that gets called is determined at runtime, rather than at compile-time. This is a key feature of polymorphism in object-oriented programming. When you create an object of a subclass but reference it using a superclass reference, like `Parent p = new Child();`, the method that gets executed is based on the actual object type (the subclass) rather than the reference type (the superclass).
+
+For example, if both the parent class and the child class have a method with the same name, and you call that method using the parent class reference, the version of the method in the child class will be executed if the object is actually an instance of the child class. This is because the decision of which method to call is made dynamically at runtime, based on the actual object in memory, not just the type of the reference variable.
+
+However, for fields, the story is different. Fields are accessed based on the reference type, not the actual object type. So, if you try to access a field using the parent class reference, you'll only be able to access the fields defined in the parent class, even if the object is an instance of the child class.
+
+This dynamic binding makes Java more flexible and allows for more reusable and maintainable code, as you can write code that works with superclass references, but still uses the specific behavior of the subclass objects at runtime.
+
+Static methods are not polymorphic, so if you call a static method using p, the Parent class's version will be called, even if Child has a static method with the same name.

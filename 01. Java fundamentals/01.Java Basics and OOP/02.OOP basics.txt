@@ -1,72 +1,19 @@
-1) Abstract class - In Java, abstract classes are a fundamental tool for creating a base class that provides both common behavior and a framework for subclasses.
-An abstract class cannot be instantiated on its own and is designed to be extended by other classes. It can contain abstract methods, which are declared without a body and must be implemented by subclasses, thereby enforcing a contract that the subclass must fulfill. Additionally, abstract classes can have concrete methods with a body, allowing subclasses to inherit common behavior directly or override it as needed. Unlike interfaces, abstract classes can also have instance variables and constructors, which can be used to initialize state that will be shared among the subclasses. This makes abstract classes particularly useful when you want to provide some shared code along with a set of methods that subclasses are required to implement, offering a balanced approach between full abstraction and code reuse.
+1) 
 
-2) In Java, interfaces can contain various types of methods, each serving different purposes. Abstract methods are the core contract in an interface, lacking a body and requiring implementing classes to provide an implementation. There are default, static and private methods in interfaces, too. The default methods are the methods which can be used or overrided from subclasses of interface. Static methods are for just interfaces and used without creating any instance. Private methods are methods that are only available inside the interface.
+2) 
 
-3) When a variable is declared with an interface type in Java, it can only hold references to objects of classes that implement that interface. Any class assigned to such a variable must implement the interface, meaning it must provide concrete implementations for all the methods defined in the interface. This ensures that the class adheres to the contract specified by the interface, allowing the variable to be used consistently regardless of the specific class implementation.
+3) 
 
-4) Polymorphism in Java is a concept that allows one action to behave differently based on the object that is performing the action. In simple terms, it means "many forms." For example, when you have a method in a parent class and that method is also present in a child class, if you call the method on an object of the child class, the version of the method from the child class will be executed. However, if the method is not overridden in the child class, the method from the parent class will be executed instead. This allows a single method to work in different ways based on the object it's acting on.
+4) 
 
-There are two main types of polymorphism in Java: compile-time (or static) polymorphism and runtime (or dynamic) polymorphism. Compile-time polymorphism is achieved through method overloading, where multiple methods have the same name but different parameters within the same class. The method that gets called is determined at compile time based on the method signature. Runtime polymorphism is achieved through method overriding, where a method in a subclass has the same name and signature as a method in its superclass. Here, the method that gets executed is determined at runtime based on the actual object's class.
+5) 
 
-Polymorphism makes code more flexible and reusable because it allows you to use objects of different classes interchangeably if they share the same interface or superclass. This leads to easier maintenance and the ability to introduce new functionality without modifying existing code.
+6) 
 
-5) In Java, the `final` keyword is used to make something unchangeable or constant. It can be applied to variables, methods, and classes, each serving a different purpose:
+7) 
 
-1. **Final Variables**: When you declare a variable as `final`, its value cannot be changed once it is assigned. For example, if you declare `final int number = 10;`, you can't later change `number` to a different value. This is useful for constants that should remain the same throughout your code.
+8) 
 
-2. **Final Methods**: If you declare a method as `final`, it cannot be overridden by any subclasses. This means that no subclass can provide a new implementation of this method. This is useful when you want to ensure that a method behaves exactly the same way in all subclasses.
+9) 
 
-3. **Final Classes**: When a class is declared as `final`, it cannot be subclassed. In other words, no other class can extend a `final` class. This is useful when you want to prevent inheritance and ensure that the class’s behavior remains unchanged.
-
-Using `final` helps in writing reliable code by enforcing immutability and preventing unintended changes or extensions.
-
-6) Initializer and static Initializer blocks:
-Initializer block is the specific block type in java classes which is called each time when the new object created according to this class.
-For each object, the method called just once. The syntax of this block is just {}.
-Static Initializer block is another block in java classes which is called first time the class loaded into memory by the JVM (Java Virtual Machine). With other words, when the first object related to this class, is called, the static initializer block is executed.
-The syntax of this is like that: static {}.
-
-7) In Java, static methods are different from regular instance methods because they belong to the class itself, not to any object. This means they cannot be overridden in the same way that instance methods can. Instead, when you declare a static method in a subclass with the same signature as one in the parent class, you're not overriding it—you're hiding it. The method that gets called is determined by the reference type at compile-time, not by the actual object's type at runtime. 
-
-For example, if you have a reference of a parent class pointing to a child class object and you call a static method, the parent class's static method will be executed, not the child's. This happens because static method calls are resolved based on the reference type during compilation. 
-
-This might make it seem like the "overridden" static method in the subclass is useless for objects, but it's important to remember that static methods are meant to be called on the class itself, not on objects. If you call the static method directly on the subclass, the subclass's version will be used. So, the static method in the subclass isn't useless, but it's not tied to the object in the way instance methods are. It's more about how you're calling the method—through the class or through an object reference.
-
-8) Dynamic binding in Java is a concept where the method that gets called is determined at runtime, rather than at compile-time. This is a key feature of polymorphism in object-oriented programming. When you create an object of a subclass but reference it using a superclass reference, like `Parent p = new Child();`, the method that gets executed is based on the actual object type (the subclass) rather than the reference type (the superclass).
-
-For example, if both the parent class and the child class have a method with the same name, and you call that method using the parent class reference, the version of the method in the child class will be executed if the object is actually an instance of the child class. This is because the decision of which method to call is made dynamically at runtime, based on the actual object in memory, not just the type of the reference variable.
-
-However, for fields, the story is different. Fields are accessed based on the reference type, not the actual object type. So, if you try to access a field using the parent class reference, you'll only be able to access the fields defined in the parent class, even if the object is an instance of the child class.
-
-This dynamic binding makes Java more flexible and allows for more reusable and maintainable code, as you can write code that works with superclass references, but still uses the specific behavior of the subclass objects at runtime.
-
-Static methods are not polymorphic, so if you call a static method using p, the Parent class's version will be called, even if Child has a static method with the same name.
-
-9) Access modifiers:
-
-In Java, access modifiers are keywords used to control the visibility and accessibility of classes, methods, fields, and constructors. There are four main types of access modifiers:
-
-1. **Public:** When something is marked as `public`, it means it can be accessed from anywhere in the program. For example, a public method or field can be used by any class, no matter where it is located.
-
-2. **Protected:** The `protected` modifier allows access within the same package and also by subclasses, even if they are in different packages. This means that `protected` methods or fields can be used by classes in the same package and by subclasses that extend the class, even if those subclasses are in different packages.
-
-3. **Default (Package-Private):** If no access modifier is specified, Java uses the default access level, which is also known as package-private. This means the element is only accessible within the same package. It's a way to allow classes in the same package to interact with each other while keeping those interactions hidden from classes in other packages.
-
-4. **Private:** The `private` modifier restricts access so that the element can only be used within the same class. No other class, including subclasses, can access private fields or methods. This is useful for hiding implementation details and protecting the integrity of the class’s data.
-
-Each modifier serves a different purpose and helps in organizing and securing your code. Using `public` lets you expose parts of your class to other parts of your program, while `protected` and default access are useful for controlling visibility within packages and subclasses. `Private` is essential for keeping data safe from unintended access and modification.
-
-10) The SOLID principles are a set of five design principles intended to make software designs more understandable, flexible, and maintainable. They are widely adopted in object-oriented programming to enhance the quality of code. The acronym SOLID stands for:
-
-1. **Single Responsibility Principle (SRP):** A class should have only one reason to change, meaning it should have only one responsibility or job. This ensures that each class is focused on a single aspect of the functionality, making the code easier to maintain and understand.
-
-2. **Open/Closed Principle (OCP):** Software entities such as classes, modules, and functions should be open for extension but closed for modification. This means that you should be able to extend the behavior of a class without modifying its existing code, which promotes code reuse and reduces the risk of introducing bugs when changes are made.
-
-3. **Liskov Substitution Principle (LSP):** Objects of a superclass should be replaceable with objects of a subclass without affecting the correctness of the program. This principle ensures that a subclass can stand in for its superclass without causing unexpected behavior, promoting reliable inheritance hierarchies.
-
-4. **Interface Segregation Principle (ISP):** Clients should not be forced to depend on interfaces they do not use. This principle advocates for designing small, specific interfaces rather than large, general ones, ensuring that implementing classes are only required to provide the functionality they actually need.
-
-5. **Dependency Inversion Principle (DIP):** High-level modules should not depend on low-level modules; both should depend on abstractions. Additionally, abstractions should not depend on details; details should depend on abstractions. This principle encourages the use of abstractions (like interfaces) to reduce the coupling between different parts of the system, making the system more flexible and easier to modify.
-
-Together, these principles help in designing systems that are more modular, easier to test, and adaptable to change. They guide developers in creating software that is robust, maintainable, and scalable by promoting clear, well-defined responsibilities and reducing dependencies.
+10) 
