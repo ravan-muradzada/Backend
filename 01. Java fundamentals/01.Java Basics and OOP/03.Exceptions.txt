@@ -54,3 +54,7 @@ For checked exceptions, if we do not have "throws" in the side of the method nam
 However, for checked exceptions, we do not need them.
 
 Unchecked exceptions are RuntimeException.
+
+-----------------------------------------
+
+Compile-time exception handling (checked) should be used, otherwise the program will not be runned. However, runtime exception (unchecked) handling is not compulsory, without it program can be run. If unhandled, they may cause the program to crash but won't prevent compilation.
