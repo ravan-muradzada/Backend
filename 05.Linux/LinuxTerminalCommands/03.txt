@@ -1,0 +1,39 @@
+grep -> It is used to search for specific patterns or text within files. It’s a powerful tool for filtering text based on a search string or regular expression, making it incredibly useful for log analysis, searching through code, or text processing.
+
+Syntax:
+grep [options] <pattern> <file(s)>
+
+<pattern>: The string or regular expression you want to search for.
+<file(s)>: The file(s) in which to search.
+
+So it searchs the lines in which <pattern> exists, and print whole the lines.
+
+Imagine we have:
+grep "hello" file.txt 
+
+It searches all the file and in each time when "hello" has found the whole line will be printed.
+
+There are some special patterns for grep command:
+
+-'^SEARCHED_THING' -> here the lines which starts with this word will be printed.
+
+-'SEARCHED_THING$' -> here the lines which ends with this word will be printed.
+
+-grep 'r..f' red.txt -> It searchs the lines and print them if they start with 'r' and finish with 'f' and between these there should be the same number of characters with the points. 
+
+-grep '[0-9]' -> It searches all the file and if the number is found in any line, the whole line will be printed.
+
+-grep '[^0-9]' -> It searches all the lines, if in any line there is at least one nonnumber character, the whole line will be printed. 
+
+-grep '[r.f]' -> It searches the lines and print them if they start with 'r' and finish with 'f'. The number characters between them does not matter.
+
+-grep 're*d' -> It searches the lines, and print them, if there is a partition which start with r and finish with d, and between them there is zero or more 'e'.
+
+If we want to find the partition with at least one 'e' between other characters, we can write something like that: 'ree*d'. Now we are sure, it will print the lines where the partition starts with 'r' and finishes with 'd' and between them there is at least one 'e'.
+
+-grep 'r[oe]*d' -> It will search and print the lines if there is a partition that starts with an r, followed by zero or more o or e characters, and then followed by a d.
+Examples:
+rod
+red
+roed
+reeeed

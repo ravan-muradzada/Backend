@@ -1,0 +1,39 @@
+Package management is a system for installing, upgrading, configuring, and removing software packages. It simplifies the process of software management, ensuring that all dependencies are met and that software is maintained in a consistent manner. Here’s a detailed overview of package management in Debian-based systems:
+
+There are two package management systems in Debain-based Linux distributions.
+One of them is called "dpkg", it is tricky and because of that, mostly new package tool called "apt-get" is used.
+
+Many of the package management commands require administrative access, so they will be prefaced with the sudo command.
+
+There are some commands for daily usage for apt-get package management system.
+
+To refresh and update available packages, we use:
+"apt-get update".
+
+It is used with "sudo", like "sudo apt-get update".
+
+To search for keywords within these packages, you can use the "apt-cache search" command.
+
+To install any package we can use this command:
+"sudo apt-get install PACKAGE_NAME".
+
+The apt-get install command can also update a package, if that package is installed and a newer version is available. If the package is not already on the system, it would be installed; if it is on the system, it would be updated.
+
+---------------------------------------------
+
+Updating and Upgrading.
+
+Updating all packages of the system should be done in two steps. First, update the cache of all packages available with "sudo apt-get update". Second, execute the "sudo apt-get upgrade" command and all packages and dependencies will be updated.
+
+---------------------------------------------
+
+Removing packages
+
+The apt-get command is able to either remove or purge(clear) a package. The difference between the two is that removing deletes all the files except configuration files, but purging deletes all.
+
+An administrator can execute the apt-get remove command to remove a package or the apt-get purge command to purge a package completely from the system.
+
+Syntax:
+
+apt-get remove PACKAGE_NAME
+apt-get purge PACKAGE_NAME

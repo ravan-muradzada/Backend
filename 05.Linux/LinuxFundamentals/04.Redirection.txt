@@ -1,0 +1,30 @@
+It is easy and useful to use terminal while working different kinds of files. In Linux terminal we have some quick methods to add, overwrite the files. They are called redirection.
+
+To redirect information to an existing file, the user must have write permissions on that file.
+
+If we want to add something to a file, the standard way is to open the file with any text editor, add the text, save and close it.
+
+Instead, especially if we need to add small strings, we can use ">" or ">>".
+
+---------------------------------------------
+
+Usage of ">":
+
+If we have a file names "file.txt" and want add there "Hello My File", we can write something like that:
+
+echo "Hello My File" > file.txt
+
+This command first deletes the content of file.txt and then write "Hello My File" here.
+
+If we want to write the content of the first file to the second file, we can use this command:
+cat firstFile.txt > secondFile.txt 
+
+It deletes the content of the second file and write the content of the first file here.
+
+---------------------------------------------
+
+Usage of ">>":
+
+Its usage is pretty similar to the previous one, but the only difference is that before adding a text to a file, it does not delete the content of the file. It just appends the text.
+
+So we can add new string to the file and the content of another file to this file without deleting its own content.

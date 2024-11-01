@@ -1,0 +1,107 @@
+1) ls -> it shows all files and directories in the current folder.
+
+There are some versions of this command:
+
+ls -a -> It shows even hidden files and flders inside the current folder.
+
+ls -l -> It shows all information about the files and folders in the current folder.
+
+We can combine them like: ls -la -> It shows all the files and folders with hidden ones with detailed information.
+
+ls -r -> It shows all things in the reverse order in reverse alphabetical order.
+
+If we want to content of another folder, we need to write the folder name after the command like:
+ls Documents/MyPractiseFolder.
+If we just write "ls", it will show the content of only current folder.
+
+We can display the content after sorting it according to any comparator.
+
+If we use -t flag (ls -lt), it will sort it according to timestamp.
+
+-S will sort it by the file size.
+
+2) pwd -> It shows the current directory. Using that we can know where we are currently in the current folderly.
+
+
+3) cd -> It is used to change the directory. 
+Usage is like that: After the command we need to write the directory name where we want to go.
+Such us, if in the current folder there is Documents folder, we can write cd Documents. 
+If the folder we want to go is not in our current folder, we should write its whole path.
+
+cd .. -> Means to go the previous folder.
+Such us, if we are Documents/MyPractiseFolder and use it, we will return the directory of "Documents".
+
+cd ~ -> It automatically changes our directory to the current user directory.
+
+
+4) chmod -> We use it to change the permission.
+The syntax is like that:
+"chmod u+x filename"
+
+Here, u stands for user (owner), g for group, and o for others.
+The part after "+" is for permission name.
+
+
+5) su -> We use it to switch to another user account, including the root account.
+
+We just need to write the username which we want to switch after the command. If we do not write any username, default it will make us root.
+
+su -; su -l; su --login -> Switches to the specified user (or root if no username is provided) and starts a login shell. 
+
+6) sudo -> It does not change our user account, but allows us to behave any user account whose name we need to write after the command. If we do not write any user name, it will help us to behave as root user.
+
+7) exit -> The command is used to terminate the current shell session. If you’re in a shell opened with su, using exit will return you to the previous user’s shell.
+
+8) sl -> If we are a root user or can behave like him, we can use this command to sketch train in the screen.
+
+9) chown -> It is used to change the ownership of files and directories. We can use both user (owner) and the group that a file or directory belongs to.
+By default, only root user has a privilage to change the ownership of the files or directories.
+
+Syntax is like that:
+
+chown [OPTION]... [OWNER][:[GROUP]] FILE...
+
+Owner - the user to whom you want to give ownership.
+
+GROUP - The group to which the file should belongs. Always ":" is used before the group name.
+
+FILE - The file or directory for which ownership needs to be changed.
+
+We can R flag(option) for directories.
+
+Examples:
+
+sudo chown newUser file.txt
+# This changes the owner of file.txt to newuser.
+
+sudo chown newUser:newGroup file.txt
+# This changes both the owner to newUser and the group to newGroup.
+
+sudo chown :newgroup file.txt
+# This changes only the group of file.txt to newgroup.
+
+sudo chown -R newUser:newGroup directory/
+# This changes the owner and group of all files and subdirectories inside directory/.
+
+10) cat -> This command in Linux is used to read and display the contents of a file. It can also concatenate multiple files and print their content to the terminal or redirect it to another file.
+
+To be able print the all content of the file, we need to write:
+cat fileName.txt 
+
+We can display multiple files together just writing something like that:
+cat file1.txt file2.txt
+
+We can create a new file from terminal input using this command like that:
+cat > newfile.txt
+
+And that is appending terminal input to the given file.
+cat >> existingfile.txt
+
+This will write the content of file1.txt into newfile.txt (overwriting the existing content).
+cat file1.txt > newfile.txt
+
+To append the first file's content to anothere one, we need to write it like that:
+cat file1.txt >> newfile.txt
+
+
+

@@ -1,0 +1,81 @@
+1) head -> It is used to view beginning of the file. Without any instructor (head file.txt), it prints the first 10 lines.
+head [OPTION]... [FILE]...
+
+We can display the first n lines like that:
+head -n n filename.txt
+# n is a natural number.
+
+2) tail -> It is used to view ending of the file. By default, it will display last 10 lines of the file.
+tail [OPTION]... [FILE]...
+
+We can display the last n lines like that:
+tail -n n filename.txt
+# n is a natural number.
+
+3) cp -> This is used to copy files and directories from one location to another. It can copy single or multiple files, and entire directories, depending on the options provided.
+cp [OPTION]... SOURCE... DESTINATION
+
+SOURCE: The file or directory you want to copy.
+DESTINATION: The location where the copy will be saved.
+
+When using the cp command, a new file is created in the destination (if one with the same name does not already exist). The contents of the source file are copied to the newly created file in the destination.
+
+
+cp file.txt /path/to/destination/
+#This copies file.txt to the specified directory.
+
+cp file.txt newfile.txt
+# Created newfile.txt and copy file.txt content here 
+
+cp -r /path/to/directory/ /path/to/destination/
+#The -r option is necessary to copy directories recursively, including all their contents.
+
+cp fileName.txt .
+# It copies fileName.txt to our current directory.
+
+4) dd -> It is used mostly to copy low level data, like disk images, writing ISO file to USB drivers. (cp is different, it is used to copy regular files and directories).
+It can be used to copy raw data to removable devices, such as USB drives and CDROMs.
+
+Syntax:
+dd if=<input file> of=<output file> [options]
+
+-if: Input file (source) from which data will be read.
+-of: Output file (destination) where data will be written.
+
+In option part we have some useful options to use:
+-bs = <SIZE> -> In the place of SIZE, we need to write the block size for reading/writing.
+
+-count = <NUMBER> -> In the place of NUMBER, we need to write the number blocks to copy.
+
+No block size or count needs to be specified when copying over entire devices.
+
+5) mv -> It is used to move files/directories between directories.
+(from one location to another one)
+
+Syntax:
+mv <source> <destination>
+
+The first argument is the source, a path to the file to be moved. The second argument is the destination, a path to where the file will be moved to.
+
+If we want to move multiple files simultaneously, you just need the file names. However, note that the last argument is always destination. Other arguments before that are the files which we want to move.
+
+Another thing we can do with this command is to rename files.
+
+mv OLD_NAME NEW_NAME
+
+We just need to write the names, not the file path.
+
+6) rm -> It is used to remove files and directories.
+
+Syntax:
+rm [options] <file/directory>
+
+If we just write "rm fileName", it will delete the file.
+If we want to delete a directory, we need to use -r flag like "rm -r directoryName".
+
+It is important to keep in mind that deleted files and directories do not go into a "trash can" as with desktop-oriented operating systems. When a file is deleted with the rm command, it is almost always permanently gone.
+
+7) echo -> It is used  to display a line of text or a variable value to the standard output (usually the terminal). It's commonly used in shell scripts and command-line operations for various purposes, such as outputting messages, displaying variable values, and formatting text.
+
+Syntax:
+"echo STRING".

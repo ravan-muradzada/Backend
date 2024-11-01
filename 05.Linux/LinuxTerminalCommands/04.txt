@@ -1,0 +1,70 @@
+1) shutdown -> It is used to power off or reboot the system in a controlled manner, allowing users to notify all logged-in users and processes that the system is going down.
+
+To be able to use this command we should have administrative access.
+
+'shutdown' -> Without any argument, it will shut down after one minute.
+
+'shutdown now' -> Shuts down the system immediately.
+
+We can write the message after the command, so when it is shutdowning, the message will appear, like 'shutdown now "GOODBYE"'.
+
+We can specify when shutdowning will happen.
+Example:
+'shutdown +15'
+
+Shuts down the system in 15 minutes. You can replace 15 with any number of minutes.
+We can replace 15 with any number.
+
+We can also special the time like that:
+'shutdown 23:00'
+
+Shuts down the system at 11:00 PM.
+
+
+With each of them, we can use message.
+
+2) date -> It prints current time.
+We just need to write 'date'.
+
+3) ifconfig -> The ifconfig command stands for "interface configuration" and is used to display network configuration information.
+(The iwconfig command is similar to the ifconfig command, but it is dedicated to wireless network interfaces.)
+
+The ifconfig command can also be used to temporarily modify network settings. Typically these changes should be permanent, so using the ifconfig command to make such changes is fairly rare.
+
+4) ping -> The ping command is used to verify connectivity between two computers. It does this by sending packets to another machine on a network. If the sender receives a response it should be possible to connect to that machine.
+
+Information is sent using “packets”; the encapsulated unit of data sent over a network. In order for the packets to find the other computer, they will need an address. The ping command uses IP addresses to identify a computer on the network that it wants to connect to.
+
+By default, the ping command will continue sending packets until the break command (CTL + C) is entered at the console. To limit how many pings are sent, use the -c option followed by the number of pings to be sent. The example below shows ping being limited to 4 iterations with -c 4.
+
+If the ping command fails, you will receive a message stating, Destination Host Unreachable.
+
+The ping command may fail even though the remote machine is connecting. This is because some administrators configure their machines, or even entire networks, not to respond to ping requests as a security measure. The ping command also works with a hostname, or domain name like yahoo.com. Using this first saves time, if that ping command is successful, there is proper name resolution AND the IP address is functioning properly as well.
+
+5) ps -> It is used to display information aboutt active processes on the system. This information is given when we use this command:
+IDs, CPU, memory usage, running status and others.
+
+When we use just "ps", these will be printed:
+PID: process identifier (unique to the process), TTY: the name of terminal (where the process is running), TIMEE: time (total time used by the process), CMD: the command which has started the process.
+
+Instead of viewing just the processes running in the current terminal, users may want to view every process running on the system. For that, we can use "-e" option.
+
+Typically, the -f option is also used as it provides more detail in the output of the command, including options and arguments. 
+
+6) passwd -> This command is used to change the user's password and manage some functionalities related to that.
+
+The syntax:
+"passwd USER_NAME".
+
+We need to enter the name of the user whose password we want to change. After the terminal will prompt to enter first the its current password and then a new password. 
+If we do not specify any username, it changes the password for the current user.
+
+If we are root and want to change a password of any user, we do not need to enter the current password.
+If the user wants to view status information about their password, they can use the "-S" option.
+
+"passwd -S USER_NAME"
+If the username is not written, it shows the status of the current user.
+
+When we use this command, this information will be seen on the screen:
+
+Username, password status, last changed time, minimum days need to pass before the current password can be changed by the user, the maximum number of days remaining for the password to expire, The number of days prior to password expiry that the user is warned, The number of days after password expiry that the user account remains active.

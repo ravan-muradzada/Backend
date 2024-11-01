@@ -1,0 +1,41 @@
+In Linux, file permissions determine who can read, write, or execute a file or directory.
+When we write the command: "ls -l", we can see file's permissions. It is written like "r, w, -".
+In each line the first character determines the type of the file:
+
+- -> for a regular file
+d -> for a directory
+l -> for a symbolic link, among others.
+
+For permissions there are three characters:
+r means read permission
+w means write permission
+x means execute permission
+
+After this character, there are permissions.
+The first permission is owner permission.
+Then sequentially, there are group and other permissions.
+
+Example:
+
+-rw-r--r--
+
+We can understand it from the first chararacter, that is a regular file. The next three characters "rw-" means that the owner has reading and writing permissions, but not executing.
+The group has read permission only (r--).
+Others have read permission only (r--).
+
+After the permission part, there is a number which represents the number of hard links.
+The next name is user name and after that you can see your current group name. Sequentially, we can see, file size, last modification date and time and file name.
+
+--------------------------------------------------
+
+It is possible to change the permission, for that we use chmod command.
+The syntax is like that:
+"chmod u+x filename"
+
+Here, u stands for user (owner), g for group, and o for others.
+"+" means adding the permission.
+The part after "+" is for permission name.
+
+Moreover, using this command we can remove permissions from the user. Example: 
+chmod -w filename.
+

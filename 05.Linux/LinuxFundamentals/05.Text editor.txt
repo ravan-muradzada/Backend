@@ -1,0 +1,157 @@
+The premier text editor for Linux and UNIX is a program called "vi". While there are numerous editors available for Linux that range from the tiny editor "nano" to the massive "emacs" editor, there are several advantages to the "vi" editor:
+
+-The "vi" editor is available on every Linux distribution in the world. This is not true of any other editor.
+
+-The "vi" editor can be executed both in a CLI (command line interface) and a GUI (graphical user interface).
+
+-While new features have been added to the "vi" editor, the core functions have been around for decades. 
+
+In reality, most Linux systems don't include the original "vi", but an improved version of it known as "vim", for "vi" improved. This fact may be hidden by most Linux distributions. For the most part, "vim" works just like "vi", but has additional features. 
+
+To get started using "vi", we need to a command like that:
+"vi newFile.txt"
+
+There are three modes used in vi: command mode, insert mode, and ex mode.
+
+-------------------------------------------
+
+Command Mode Movement
+
+Initially, the program starts in command mode. Command mode is used to type commands, such as those used to move around a document, manipulate text, and access the other two modes. To return to command mode at any time, press the Esc key.
+
+Once some text has been added into a document, to perform actions like moving the cursor, the Esc key needs to be pressed first to return to command mode. This seems like a lot of work, but remember that "vi" works in a terminal environment where a mouse is useless.
+
+If we want to change the cursor place, we need to first press Esc first and then:
+
+h: For left one character,
+j: For down one character,
+k: For up one character, 
+l: For right one character,
+w: For forward one word,
+b: For back one word,
+^: For beginning of the file,
+$: For end of the file.
+
+These motions can be prefixed with a number to indicate how many times to perform the movement. For example, 5h would move the cursor five characters to the left and 3w would move the cursor three words to the right.
+
+To move the cursor to a specific line number, type that line number followed by the G character. For example, to get to the fifth line of the file type 5G. 1G or gg can be used to go to the first line of the file, while a lone G will take you to the last line. To find out which line the cursor is currently on, use CTRL+G.
+
+Note:
+Since the upgrade to "vim" it is also possible to use the arrow keys ←↓↑→ instead of h, j, k, l respectively.
+
+-------------------------------------------
+
+Inserting mode
+
+This mode is used to add text to the file. There are a few ways to enter insert mode from command mode. The difference among them is the place where the insertion process will start.
+
+i (most common) - Insertion mode starts from before the cursor.
+
+a - Insertion mode starts from after the cursor.
+
+I - Insertion mode starts at the beginning of the file.
+
+A - Insertion mode starts at the end of the file.
+
+o - Enter insert mode on a blank line after the cursor.
+
+O - Enter insert mode on a blank line before the cursor.
+
+-------------------------------------------
+
+Searcing in Vi (or Vim)
+
+In Vi text editor, we can find text patterns using "/" or "?".
+
+First, we need to press Esc to stop other process like inserting.
+Then we need to press "/" and write the pattern we want to find, after we just need to press Enter button.
+Now we will see the first occurrence of the pattern in the file. If we want to find next occurrencies, we need to press 'n' button.
+After going next match, if we want to return the previous occurrencies, we should press 'N'.
+
+If our goal is to find the last occurrence of the pattern, instead of "/", we should use "?". And in this case, 'n' is for the previous occurrencies and 'N' is for the next occurrencies.
+
+-------------------------------------------
+
+Command Mode Actions
+
+The standard convention for editing content with word processors is to use copy, cut, and paste. 
+In Vi, we use command mode for these.
+
+1) Cut(delete) command:
+
+This command deletes the specific part of the text and copy it, too.
+
+After pressing Esc and open command mode.
+
+dd -> It cuts a current line and copy it.
+
+ndd-> n here is natural number. It deletes n number of lines and copy them.
+
+dw -> It deletes the pattern starting from the current position of the cursor up to end of the word and copy it.
+
+dnw -> n here is natural number. It deletes the current word starting from the position of the cursor and next (n-1) words.
+
+dnh -> n here is natural number. It deletes n character from the left and copy them.
+
+2) Change command:
+
+It is very similar to delete (cut) command, only difference is that after cutting, immediately it changes to the insert mode.
+
+After pressing Esc and open command mode.
+
+cc -> Make the same thing with "dd" and changes the mode to insert.
+
+cw -> Make the same thing with "dw" and changes the mode to insert.
+
+cnw -> Make the same thing with "dnw" and changes the mode to insert.
+
+cnh -> Make the same thing with "dnh" and changes the mode to insert.
+
+3) Yank(copy) command:
+
+This command is used just to copy the specific part of the text without deleting it. It is the same with copy command in other text editors.
+
+yy -> It copies the current line.
+
+nyy -> n here is natural number. It copies the next n lines.
+
+yw -> It copies the current word starting from the current position of the cursor.
+
+y$ -> It copies the current line starting frrom the current position of the cursor.
+
+4) Put command:
+
+This command is used to put the pattern which was copied before.
+
+p -> It pastes the pattern after the current position of the cursor.
+
+P (most common)-> It pastes the pattern before the current position of the cursor.
+
+-------------------------------------------
+
+Exit mode 
+
+We use some specific commands when we want to quit or save the changes on the files.
+
+Before that, we should use ":", it shows the editor that we want to exit.
+
+":w" -> Saves (writes) the current changes in the file. If the file has been edited, this command will update it with the new content.
+
+":w fileName" -> Save a copy of the current file as filename.
+
+":w!" -> Forcefully saves the file. This is used when you don't have write permissions or if the file is read-only. It overrides restrictions to ensure the file is saved.
+
+":1" -> Moves the cursor to the first line of the file. This is useful for quickly jumping to the beginning of the document.
+
+":e fileName" -> Opens a specified file (filename) in vi or vim. If you’re already editing a file, this will open the new file, replacing the current one in the editor.
+
+":q" -> Quits vi or vim. This only works if there are no unsaved changes. If there are unsaved changes, you will see a warning, and the command will not execute.
+
+":q!" -> Forcefully quits vi or vim without saving any changes. This command is used when you want to discard changes and exit the editor immediately.
+
+":x" or ":wq" -> They are the same. They save the file and then quit the editor.
+
+
+
+A quick analysis of the table above reveals that if an exclamation mark, !, is added to a command, it then attempts to force the operation.
+
