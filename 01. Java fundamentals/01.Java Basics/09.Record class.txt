@@ -1,0 +1,45 @@
+In Java, a record is a special kind of class introduced in Java 14 (as a preview feature) and officially in Java 16. It is designed to be a concise, immutable data carrier for holding data without needing boilerplate code like constructors, getters, toString, equals, and hashCode methods. Records are ideal when you need a class primarily to hold values.
+
+In record classes, all fields are final (constant) default, so we cannot change after creating them.
+
+Moreover, there are automatic methods like toString, equals, hashCode methods and also getters and setters.
+
+Record classes cannot extend another class and other classes cannot extend record class.
+
+---------------------------------------------
+
+Record classes are used mostly for data transferring between layers of an application and for holding simple configurations or settings objects that can be hold as constant values.
+
+---------------------------------------------
+
+We can create some new constructors, however we cannot add new fields, and the number of parameters of the constructors should be at least one:
+
+============================================
+public record Example (String name, int age){
+    public Example(String name){
+        this(name, 0);
+    }
+
+    public Example(int age){
+        this("", age);
+    }
+}
+============================================
+
+
+---------------------------------------------
+
+If we want to limit the parameters from primary constructor, we can write something like that:
+
+============================================
+public record Person(String name, int age) {
+    public Person {
+        if (age < 0) {
+            throw new IllegalArgumentException("Age cannot be negative");
+        }
+    }
+}
+============================================
+
+That is called compact constructor.
+
