@@ -1,0 +1,85 @@
+FileOutputStream in Java is used to write raw binary data (bytes) to a file. It allows you to create, modify, or append data to a file. The data is written as a sequence of bytes, so it is useful for writing binary data such as images, audio, or serialized objects, but it can also be used to write text data (though FileWriter or BufferedWriter is usually better suited for text).
+
+
+Key Points of FileOutputStream:
+
+-Writing Bytes: FileOutputStream writes data in byte format. You can write either a single byte at a time or an array of bytes.
+
+-File Creation: If the specified file doesn't exist, FileOutputStream will create it. If the file already exists, by default, it will overwrite the contents unless you specify to append to the file.
+
+-Modes:
+--Overwrite mode (default): If you don't specify, it overwrites the existing content of the file.
+--Append mode: If you want to append to the existing content, you can use a constructor that accepts a boolean append flag.
+
+
+Constructors:
+
+-FileOutputStream(String fileName): Creates an output stream to write to the file with the specified name.
+
+-FileOutputStream(String fileName, boolean append): Creates an output stream to write to the file, and if append is true, it will append data to the file.
+
+-FileOutputStream(File file): Creates an output stream to write to a File object.
+
+
+Important Considerations:
+
+-Buffering: FileOutputStream writes bytes directly to the file. For performance optimization (especially with large data), you might want to use BufferedOutputStream, which adds buffering.
+
+-Handling Exceptions: Writing to files involves IO operations that can fail (due to missing permissions, full disk space, etc.), so proper exception handling (try-catch or throws) is essential.
+
+-Text Data: If you’re writing text data, you’ll often need to convert strings to bytes using methods like getBytes(), or you can use FileWriter or BufferedWriter for more direct handling of characters.
+
+
+Key Methods in FileOutputStream:
+
+-write(int b): Writes a single byte to the file. The lower 8 bits of the integer are written.
+-write(byte[] b): Writes an array of bytes to the file.
+-write(byte[] b, int off, int len): Writes a specific number of bytes from the array starting at the offset off.
+-close(): Closes the stream and releases the resources.
+
+
+=================================================
+public class Main {
+    public static void main(String[] args) throws IOException {
+        FileOutputStream fos = new FileOutputStream("myfile.txt");   // Create or overwrite the file
+
+        // String to byte array (because FileOutputStream works with bytes)
+
+        String data = "Hello World";
+        byte[] byteData = data.getBytes();
+
+        fos.write(byteData);
+
+        if (fos != null)
+            fos.close();
+    }
+}
+=================================================
+
+
+=================================================
+public class Main {
+    public static void main(String[] args) throws IOException {
+        FileOutputStream fos = new FileOutputStream("myfile.txt", true); // Appending mode
+
+        fos.write("How are you, bro?".getBytes());
+
+        if (fos != null)
+            fos.close();
+    }
+}
+=================================================
+
+
+=================================================
+public class Main {
+    public static void main(String[] args) throws IOException {
+        FileOutputStream fos = new FileOutputStream("myfile.txt", true);
+        byte[] binaryData = { 0x48, 0x65, 0x6C, 0x6C, 0x6F }; // Hex values for 'Hello'
+
+        fos.write(binaryData);
+        if (fos != null)
+            fos.close();
+    }
+}
+=================================================

@@ -1,0 +1,7 @@
+In Java, annotations are metadata added to classes, methods, variables, or other code elements to provide extra information for the compiler or runtime. They don’t change the behavior of the code directly but can be used by tools and libraries to process code or make decisions at runtime.
+
+Why Use Annotations?
+
+-Code Instructions: Annotations give hints to the compiler or runtime about how to handle certain elements.
+-Configuration: Annotations can replace external XML configurations (like in frameworks).
+-Documentation: Some annotations serve as documentation for other developers.

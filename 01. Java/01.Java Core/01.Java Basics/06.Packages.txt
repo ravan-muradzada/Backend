@@ -1,0 +1,17 @@
+In Java, a package is a way to group related classes and interfaces, organizing your code into namespaces. Packages prevent name conflicts, manage accessibility, and help maintain clean, modular code.
+
+
+Why We Need Packages
+
+-Avoid Name Conflicts: Different classes can have the same name if they’re in different packages.
+-Organize Code: Group related classes for better code structure, making it easier to find and manage.
+-Control Access: You can specify which classes and methods are accessible outside the package.
+-Reuse and Maintainability: Modular code is easier to update and reuse in different projects.
+
+
+How to Work with Packages
+
+We need to write the name of the package at the top of java file which we want to become inside the package. 
+Then from another class (which is not inside the package folder) we should use "import" keyword to call this class and to be able to use its proper methods and utilities.
+If we want to import specific files from the package we need to write their names with different "import" statements like "import packageName.fileName".
+However, if our purpose is to import all the files from the package, we just need to use "*" after the package name like: "import packageName.*"

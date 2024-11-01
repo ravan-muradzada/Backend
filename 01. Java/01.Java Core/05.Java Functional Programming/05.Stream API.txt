@@ -1,0 +1,138 @@
+The Stream API in Java is a powerful tool introduced in Java 8 to process collections of objects in a functional and declarative style. It allows you to perform operations on a sequence of elements, such as filtering, mapping, reducing, and collecting results. Streams can be thought of as pipelines (or conveyor belts) through which data flows and is transformed, step by step.
+
+Streams do not modify the underlying data structure; instead, they return new streams or results. Streams can be used with any collection, arrays, or even custom data sources.
+
+
+1) java.util.stream package
+
+The java.util.stream package contains classes and interfaces to support the Stream API in Java. Key interfaces and classes include:
+
+-Stream<T>: The primary interface representing a stream of objects of type T.
+-IntStream, LongStream, DoubleStream: Specializations for primitive types.
+-Collectors: A utility class to accumulate elements of a stream into collections.
+-StreamSupport: Allows the creation of streams from custom sources.
+
+
+2) When to use Stream API?
+We can use Stream API when we need to perform some operations like filtering, mapping, reducing, etc..
+Moreover, it can be useful while avoiding to modifify the original collection (streams work immutably).
+It makes our code more concise and readable while working with lambda expressions. It helps us while working with large datasets efficiently, possibly parallel. When we want to focus on what should be done, not how it should be done (declarative style).
+
+
+3) Conveyor Belt Analogy
+
+You can think of a stream like a conveyor belt in a factory:
+
+-Data comes onto the belt: You start with an initial collection or array.
+-Non-terminal (intermediate) operations: Along the conveyor belt, different tools (operations) apply transformations (like filtering, mapping, etc.).
+-Terminal operation: At the end of the conveyor belt, a final operation processes the data and returns a result (like collecting the elements into a list or summing them up).
+
+
+4) Terminal Operations
+
+Non-terminal (Intermediate) Operations
+These operations return a new stream and allow you to chain more operations without consuming the elements. They are lazy, meaning no work is done until a terminal operation is invoked.
+
+Examples of non-terminal operations:
+
+-filter(Predicate<T>): Filters the elements based on a condition.
+-map(Function<T, R>): Transforms each element by applying a function.
+-distinct(): Removes duplicates.
+-sorted(): Sorts the stream’s elements.
+-limit(long n): Limits the stream to the first n elements.
+
+
+5) Terminal Operations
+
+These operations consume the stream and produce a final result. After a terminal operation, the stream is no longer usable.
+
+Examples of terminal operations:
+
+
+-collect(Collector): Converts the stream into a collection (e.g., list, map, set).
+
+-forEach(Consumer): Performs an action for each element.
+
+-reduce(BinaryOperator<T>): Reduces the stream to a single value (e.g., summing elements).
+
+-count(): Counts the elements in the stream.
+
+-findFirst(): Returns the first element (if any).
+
+
+6) parallelStream()
+
+The parallelStream() method is used to process the stream in parallel, leveraging multiple cores for better performance. It's particularly useful for large datasets where parallel processing can provide a performance boost.
+
+
+
+---------------------------------------------------------
+
+What is the difference between map() and flatMap()?
+
+1. map()
+
+-Purpose: Transforms each element of the stream into another form, producing a one-to-one mapping.
+-Output: The output is a stream of the same number of elements, but each element is transformed.
+
+
+2. flatMap()
+
+-Purpose: Transforms each element of the stream into another stream, effectively flattening the result.
+-Output: The output can have a different number of elements than the input stream because it flattens the nested structure.
+
+
+
+---------------------------------------------------------
+
+What are the differences between map and mapToInt, mapToDouble, mapToLong?
+
+-map(): When you want to convert from one object type to another (e.g., String to Integer, Object to String).
+
+-mapToInt() / mapToDouble() / mapToLong(): When you need to work with primitive types (int, double, long). These methods are efficient for primitive streams because they avoid the overhead of boxing/unboxing.
+
+
+---------------------------------------------------------
+
+
+The reduce function is a powerful tool in functional programming for aggregating or accumulating stream elements.
+It allows you to define custom operations to combine elements in a stream into a single result.
+It can handle both empty streams and provide a default value using an identity.
+
+
+=======================================================
+import java.util.Arrays;
+import java.util.List;
+
+public class ReduceExample {
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+
+        // Using reduce to sum the numbers
+        int sum = numbers.stream()
+                         .reduce(0, (a, b) -> a + b); // Identity is 0
+
+        System.out.println("Sum: " + sum); // Output: Sum: 15
+    }
+}
+=======================================================
+
+
+
+=======================================================
+import java.util.Arrays;
+import java.util.List;
+
+public class MaxValueExample {
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(3, 5, 7, 2, 8);
+
+        // Using reduce to find the maximum value
+        int max = numbers.stream()
+                         .reduce(Integer.MIN_VALUE, (a, b) -> Math.max(a, b));
+
+        System.out.println("Maximum value: " + max); // Output: Maximum value: 8
+    }
+}
+=======================================================
+

@@ -1,0 +1,224 @@
+Part 3: Java Collections Framework Interview - Questions and Answers
+CAN DIFFERENT OBJECTS IN MEMORY (REF0 != REF1) HAVE REF0.HASHCODE() == REF1.HASHCODE()?
+
+
+
+Yes they can. The hashCode() method does not guarantee the uniqueness of the returned value.
+
+
+
+
+
+CAN DIFFERENT OBJECTS IN MEMORY (REF0 != REF1) HAVE REF0.EQUALS(REF1) == TRUE?
+
+
+
+Yes they can. To do this, the equals() method must be overridden in the class of these objects.
+
+
+
+If the Object.equals() method is used, then for two references x and y, the method will return true if and only if both references point to the same object (i.e. x == y returns true).
+
+
+
+
+
+IF THE CLASS POINT{INT X, Y;} IS "CORRECT" TO IMPLEMENT THE EQUALS METHOD (RETURN REF0.X == REF1.X && REF0.Y == REF1.Y), BUT MAKE THE HASH CODE IN THE FORM OF INT HASHCODE() { RETURN X;}, THEN WILL SUCH POINTS CORRECTLY BE PLACED AND REMOVED FROM HASHSET?
+
+
+
+HashSet uses HashMap to store elements (the object itself is used as a key). When an element is added to the HashMap, the hashcode and position in the array where the new element will be inserted is calculated. All instances of the Point class have the same hashcode, causing the hash table to degenerate into a list. When a collision occurs, a check is made for the presence of such an element in the current list.
+
+
+
+If the element is found, its value is overwritten. In our case, for different objects, the equals() method will return false. Accordingly, a new element will be added to the HashSet.
+
+
+
+Retrieving the element will also succeed.
+
+
+
+But the performance of such code will be poor and the benefits of hash tables will not be used.
+
+
+
+
+
+
+
+CAN DIFFERENT REFERENCES TO THE SAME OBJECT IN MEMORY (REF0 == REF1) HAVE REF0.EQUALS(REF1) == FALSE?
+
+
+
+No, he can not. The equals() method must guarantee the property of reflexivity: for any non-null x references, the x.equals(x) method must return true.
+
+
+
+
+
+THERE IS A CLASS POINT{INT X, Y;}. WHY IS A HASHCODE OF THE FORM 31 * X + Y PREFERRED THAN X + Y?
+
+
+
+The multiplier makes the hash value dependent on the order in which the fields are processed, and this gives a much better hash function.
+
+
+
+
+
+
+
+
+
+EQUALS() GENERATES AN EQUIVALENCE RELATION. WHAT PROPERTIES DOES THIS RELATION HAVE: COMMUTATIVITY, SYMMETRY, REFLEXIVITY, DISTRIBUTION, ASSOCIATION, TRANSITIVITY?
+
+
+
+The equals() method should provide:
+
+symmetry (for any non-null x and y references, the x.equals(y) method must return true if and only if y.equals(x) returns true);
+
+reflexivity (for any non-null references x, the x.equals(x) method must return true.);
+
+transitivity (for any non-null references x, y, and z, if x.equals(y) returns true and y.equals(z) returns true, then x.equals(z) must also return true).
+
+
+
+There are also two more properties: persistence and null inequality.
+
+
+
+
+
+EQUALS MUST CHECK THAT THE (EQUALS(OBJECT THAT)) IS THE SAME TYPE OF THE OBJECT ITSELF. WHAT IS THE DIFFERENCE BETWEEN THIS.GETCLASS() == THAT.GETCLASS() AND THAT INSTANCEOF MYCLASS?
+
+
+
+The instanceof operator compares an object and the specified type. It can be used to test whether a given object is an instance of some class, or an instance of its child class, or an instance of a class that implements a specified interface.
+
+
+
+getClass() = ... checks two types for identity.
+
+
+
+To correctly implement the contract of the equals() method, you must use exact comparison with getClass().
+
+
+
+
+
+WILL HASHMAP WORK IF ALL KEYS RETURN INT HASHCODE() {RETURN 42;}?
+
+
+
+Yes, it will. But then the hash table degenerates into a linked list and loses its advantages.
+
+
+
+
+
+WHY DID HASHMAP BE ADDED IF HASHTABLE ALREADY HAS BEEN ADDED?
+
+
+
+The Hashtable class was introduced in JDK 1.0 and is not part of the Java Collection Framework. The methods of the Hashtable class are synchronized, which provides thread safety, but this leads to a decrease in performance, which is why the HashMap class was introduced, the methods of which are not synchronized.
+
+
+
+In addition, the HashMap class has some other differences: for example, it allows you to store one null key and many null values.
+
+
+
+
+
+IN THEORY, THERE ARE TWO BASIC HASH TABLE IMPLEMENTATIONS: BASED ON OPEN ADDRESSING AND BASED ON THE CHAINING METHOD. HOW IS HASHMAP IMPLEMENTED? WHY DID TEHY IMPLEMENTED IT IN SUCH WAY (IN YOUR OPINION)? WHAT ARE THE PROS AND CONS OF EACH APPROACH?
+
+
+
+The HashMap class is implemented using the chaining method, i.e. Each array cell has its own linked list, and if a collision occurs, a new element is added to this list.
+
+
+
+For the chain method, the fill factor can be greater than 1; with an increase in the number of elements, the performance decreases linearly. Such tables are convenient to use if the number of stored elements is not known in advance, or there can be quite a lot of them, which leads to large values ​​of the fill factor.
+
+
+
+Among the methods of open implementation, there are:
+
+linear probing;
+
+quadratic probing;
+
+double hashing.
+
+
+
+The main disadvantages of structures with the open addressing method:
+
+The number of elements in the table cannot exceed the size of the array. As the number of elements in the table increases and the load factor increases, the performance of the structure drops sharply, so rehashing is necessary.
+
+It is difficult to organize the removal of an element.
+
+Also, the first two methods of open addressing lead to the problem of primary and secondary grouping.
+
+
+
+The main advantage of an open addressable hash table is that there is no overhead for creating and storing list objects. It is also easier to organize object serialization/deserialization.
+
+
+
+
+
+HOW MANY NEW OBJECTS ARE CREATED WHEN YOU ADD A NEW ELEMENT TO A HASHMAP?
+
+
+
+One new object of the static nested Entry<K,V> class.
+
+
+
+
+
+HOW DOES A HASHMAP WORK WHEN YOU ATTEMPT TO SAVE TWO ELEMENTS IN IT BY KEYS WITH THE SAME HASHCODE BUT FOR WHICH EQUALS == FALSE?
+
+
+
+The hashCode value is used to calculate the index of the array cell to which the element will be added. Before adding, a check is made for the presence of already existing elements in this cell. If there are no elements, then it is added. If a collision occurs, the list is iteratively traversed looking for an element with the same key and hash code.
+
+
+
+If such an element is found, its value is overwritten and the old one is returned. Since the condition says that the added keys are different, the second element will be added to the beginning of the list.
+
+
+
+
+
+HASHMAP CAN BE TURNED INTO A LIST EVEN FOR KEYS WITH DIFFERENT HASHCODE. HOW IS IT POSSIBLE?
+
+
+
+This is possible if the method that determines the array cell number by hashCode will return the same value.
+
+
+
+
+
+WHAT IS THE WORST TIME OF A GET(KEY) METHOD FOR A KEY THAT IS NOT IN THE TABLE (O(1), O(LOG(N)), O(N), O(N*LOG(N)), O(N*N ))?
+
+
+
+O(N). The worst case is searching for a key in a table that is turned into a list, the iteration of the keys of which takes time linearly proportional to the number of stored elements.
+
+
+
+
+
+EXPLAIN THE MEANING OF PARAMETERS IN THE HASHMAP(INT INITIALCAPACITY, FLOAT LOADFACTOR) CONSTRUCTOR.
+
+
+
+int initialCapacity - the initial size of the HashMap (the number of buckets in the hash table at the time of its creation), the default value is 16.
+
+float loadFactor - HashMap fill factor. It is equal to the ratio of the number of stored elements in the table to its size. loadFactor - is a measure of filling the table with elements, when the number of values stored by the table is exceeded, automatic rehashing occurs. The default value of 0.75 is a good compromise between access time and amount of stored data.

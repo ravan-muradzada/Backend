@@ -1,0 +1,102 @@
+FileWriter is a class in Java used to write character data to files. It's part of the java.io package and is specifically designed for writing text files, as it works with character streams. Unlike FileOutputStream, which writes raw bytes, FileWriter writes characters, making it easier to work with text files.
+
+
+Key Features of FileWriter:
+
+-Character Stream: FileWriter writes data as characters, making it more suitable for text files than FileOutputStream, which writes binary data.
+-Overwriting and Appending: It can either overwrite an existing file or append to the existing content, depending on the constructor used.
+-Platform-Specific Line Endings: It can handle platform-specific line breaks when writing lines of text (like \n or \r\n).
+
+
+Common Constructors:
+
+-FileWriter(String fileName): Creates a FileWriter that writes to the specified file. If the file exists, it will be overwritten.
+
+-FileWriter(String fileName, boolean append): Creates a FileWriter that writes to the specified file. If append is true, the data will be appended to the file, rather than overwriting it.
+
+-FileWriter(File file): Same as above but takes a File object instead of a file name.
+
+
+Key Methods in FileWriter:
+
+-void write(int c): Writes a single character to the file. The character is passed as an integer (because Java uses Unicode, which can be represented as an integer).
+-void write(String str): Writes a string to the file.
+-void write(char[] cbuf): Writes an array of characters to the file.
+-void flush(): Forces any buffered data to be written to the file.
+-void close(): Closes the FileWriter and releases system resources.
+
+================================================
+FileWriter fw = new FileWriter("myfile.txt");
+        // Overwriting
+        
+        fw.write("Here it is!");
+
+        if (fw != null)
+            fw.close();
+================================================
+
+
+================================================
+public static void main(String[] args) throws IOException {
+        FileWriter fw = new FileWriter("myfile.txt", true);
+        // Appending mode
+        
+        fw.write("\nYep!");
+
+
+        if (fw != null)
+            fw.close();
+    }
+================================================
+
+
+================================================
+public static void main(String[] args) throws IOException {
+        FileWriter fw = new FileWriter("myfile.txt");
+        // Overwriting mode
+
+        String string = "Welcome!";
+        char[] charArray = "\nHow are you?".toCharArray();
+
+        fw.write(string);
+        fw.write(charArray);
+
+        if (fw != null)
+            fw.close();
+    }
+================================================
+
+
+
+Instead of handling closing process, we can use try block like that:
+
+================================================
+public static void main(String[] args) throws IOException {
+        try(FileWriter fw = new FileWriter("myfile.txt", true)){
+           fw.write("ok");
+        }
+    }
+================================================
+
+
+--------------------------------------------------
+
+Handling Character Encoding with OutputStreamWriter:
+
+If you need to write text with a specific character encoding (e.g., UTF-8), use OutputStreamWriter with a FileOutputStream:
+
+================================================
+import java.io.OutputStreamWriter;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class OutputStreamWriterExample {
+    public static void main(String[] args) throws IOException {
+        // Writing with specific encoding (UTF-8)
+        OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream("output.txt"), "UTF-8");
+
+        writer.write("This text is written with UTF-8 encoding.");
+        writer.close();
+    }
+}
+================================================

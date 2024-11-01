@@ -1,0 +1,30 @@
+StringBuffer and StringBuilder are classes in Java used to create mutable strings, meaning their contents can be modified without creating new objects each time. They’re ideal for cases where you need to frequently modify text, like building dynamic strings in a loop.
+
+How They Work
+
+-Both StringBuffer and StringBuilder use a mutable character array to hold the string data.
+
+-Modifying a String would normally create a new object. But with StringBuffer and StringBuilder, changes are applied directly to the existing character array, making operations faster.
+
+Key Differences
+
+-StringBuffer: Thread-safe, meaning it can be used safely across multiple threads. However, it’s a bit slower due to the extra overhead of thread-safety.
+
+-StringBuilder: Not thread-safe but faster. Use it when you’re working in a single-threaded environment.
+
+
+-----------------------------------------
+
+Methods
+
+Their methods are mostly the same.
+
+Some of useful methods are these:
+
+1) append(String s) -> It appends string s to the end of the main string.
+
+2) insert(int, char) -> It inserts the given character to the given index.
+
+3) delete(int, int) -> It removes characters from the given range.
+
+4) reverse() -> It reverses the contents.

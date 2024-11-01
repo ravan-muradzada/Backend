@@ -1,0 +1,91 @@
+What is interrupt() method and why do we use it?
+
+The interrupt() method in Java is used to signal a thread that it should stop what it's doing and, ideally, terminate. However, calling interrupt() doesn't actually stop or terminate the thread by itself—it just sets an interrupt flag on the thread, which can be checked or handled within the thread's code.
+
+Key Points About interrupt():
+
+-Signaling Mechanism: When interrupt() is called on a thread, it sets an internal flag called the "interrupted status." This is a way to signal to the thread that it should stop its current activity. It’s up to the thread to handle this signal.
+
+-Doesn't Forcefully Stop the Thread: interrupt() does not directly stop the thread or force it to terminate. Instead, it provides a way for the thread to stop in a controlled manner by checking its own interrupted status or handling specific exceptions.
+
+-Effect on Blocking Methods: If a thread is blocked (e.g., waiting or sleeping), calling interrupt() will cause it to throw an InterruptedException, allowing the thread to stop waiting and potentially exit. Examples of methods affected by interrupt():
+
+-Interrupt Status: A thread can check its own interrupted status using:
+
+    --Thread.interrupted(): Returns true if the thread has been interrupted and clears the interrupted status.
+    --isInterrupted(): Returns true if the thread has been interrupted but does not clear the interrupted status.
+
+
+-------------------------------------------------------
+
+Example Where interrupt() Can Stop the Thread:
+
+In this example, we have a thread performing a task that is checking the interrupt status or catches an InterruptedException during sleep.
+
+=========================================================
+class MyThread extends Thread {
+    public void run() {
+        try {
+            while (!Thread.currentThread().isInterrupted()) {
+                System.out.println("Thread is running...");
+
+                // Simulate some work
+                Thread.sleep(1000);  // Sleep for 1 second
+            }
+        } catch (InterruptedException e) {
+            // Thread was interrupted during sleep or wait
+            System.out.println("Thread was interrupted while sleeping.");
+        }
+        System.out.println("Thread is stopping.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) throws InterruptedException {
+        MyThread thread = new MyThread();
+        thread.start();
+
+        // Let the thread run for 3 seconds
+        Thread.sleep(3000);
+
+        // Now interrupt the thread
+        thread.interrupt();
+    }
+}
+=========================================================
+
+Output here will be like that:
+############################################
+Thread is running...
+Thread is running...
+Thread is running...
+Thread was interrupted while sleeping.
+Thread is stopping.
+############################################
+
+Up to executing Thread.sleep(3000) in the main thread, the "MyThread" iterates the loop three times and prints the running message. After 3 seconds, in the main thread, the next line (interrupting "MyThread") executed and "MyThread" stops its process.
+
+
+-------------------------------------------------------
+
+When interrupt() Can Terminate the Thread:
+
+-When the thread is sleeping or waiting: Calling interrupt() will cause Thread.sleep(), Object.wait(), or Thread.join() to throw InterruptedException. In this case, the thread can handle the exception and stop itself.
+
+-When the thread checks its interrupt status: If the thread periodically checks its interrupted status using Thread.interrupted() or isInterrupted() and exits its loop or task when interrupted, the thread will terminate gracefully.
+
+
+Important Notes:
+
+-Interrupting Non-Blocking Threads: If a thread is not in a blocking state (e.g., it's running CPU-bound code without checking for interrupts), calling interrupt() won't stop the thread unless it manually checks for its interrupt status.
+
+-Thread Safety: Proper handling of interrupt() helps in safely terminating threads, especially in long-running or background tasks, where abrupt stopping might cause issues like data inconsistency.
+
+
+In summary, interrupt() provides a cooperative mechanism for thread termination, where the thread has control over how and when it will stop, based on its state and code.
+
+
+
+
+
+

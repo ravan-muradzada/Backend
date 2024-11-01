@@ -1,0 +1,66 @@
+Cloning in Java refers to creating an exact copy (or nearly exact) of an existing object. When you clone an object, a new object is created with the same values as the original object. Java provides a mechanism to perform cloning through the Cloneable interface and the clone() method.
+
+
+Key Concepts of Cloning in Java
+
+1) Shallow Cloning:
+
+In shallow cloning, the new object is a copy of the original object, but nested objects (references) inside the original object are not copied. Instead, they point to the same memory location as in the original object.
+Changes to nested objects in the cloned object will reflect in the original object because they share the same reference.
+
+2) Deep Cloning:
+
+In deep cloning, both the object and the nested objects (objects referenced by the original object) are fully copied.
+Changes to the cloned object do not affect the original object because a new instance of every nested object is created.
+
+
+The Cloneable Interface
+
+-Java’s Cloneable interface is a marker interface (it does not contain any methods).
+-If a class implements the Cloneable interface, it indicates that the class supports cloning and can be cloned using the clone() method from the Object class.
+-If a class does not implement Cloneable and the clone() method is called, a CloneNotSupportedException will be thrown.
+
+
+The clone() Method
+
+-The clone() method is provided by the Object class.
+-When invoked, it creates a shallow copy of the object unless deep cloning logic is implemented manually.
+We should override this method with the "protected" access modifier like that:
+
+=======================================
+protected Object clone() throws CloneNotSupportedException{
+    return super.clone();
+}
+=======================================
+(That is shallow copy)
+
+
+
+Deep Cloning Example
+
+=======================================
+public class Car implements  Cloneable {
+    @Serial
+    private static final long serialVersionUID = 23;
+    public ArrayList<Integer> arr = new ArrayList<>();
+    String name, lastName;
+    double age, seriaNum;
+
+    public Car(String name, String lastName, double age, double seriaNum) {
+        this.name = name;
+        this.lastName = lastName;
+        this.age = age;
+        this.seriaNum = seriaNum;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException{
+        Car cloned = (Car) super.clone();
+        ArrayList<Integer> _arr_ = new ArrayList<>(arr);
+        cloned.arr = _arr_;
+
+        return cloned;
+    }
+}
+=======================================
+

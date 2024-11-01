@@ -1,0 +1,55 @@
+1) Thread Scheduler
+
+-Definition: The thread scheduler is part of the Java Virtual Machine (JVM) that decides which thread should run at any given time. It manages the execution of multiple threads in a Java application.
+
+-Scheduling Algorithms: It uses various algorithms (e.g., Round Robin, Priority Scheduling) to determine the order of thread execution based on factors like thread priority and fairness.
+
+Types of Scheduling:
+
+    -Preemptive Scheduling: The scheduler can interrupt a currently running thread to start or resume another thread.
+    -Time-Slicing: Each thread is given a small time slice to execute, after which it may be paused to allow another thread to run. 
+
+2) Race condition 
+
+-Definition: A race condition occurs when two or more threads access shared data and try to change it simultaneously. This can lead to unpredictable and incorrect results due to the timing of the thread execution.
+-Example: If two threads increment a shared counter at the same time, they might read the same value before either writes the updated value back, resulting in a lost update.
+-Prevention: To prevent race conditions, synchronization techniques like using synchronized blocks, locks, or other concurrency mechanisms should be implemented.
+
+
+3) Priority Field in Thread
+
+-Definition: Each thread in Java has a priority level, represented by an integer between Thread.MIN_PRIORITY (1) and Thread.MAX_PRIORITY (10). The default priority is Thread.NORM_PRIORITY (5).
+-Usage: Thread priorities can influence the order in which threads are scheduled. Higher priority threads are generally executed before lower priority ones, but the exact behavior is not guaranteed and depends on the JVM and the operating system.
+-Setting Priority: You can set a thread's priority using the setPriority(int newPriority) method.
+
+
+4) yield() method in Thread class
+
+-Definition: The yield() method is a static method in the Thread class that suggests to the thread scheduler that the current thread is willing to yield its current use of the CPU.
+-Behavior: When a thread calls yield(), it can pause its execution and allow other threads of the same priority to run. However, this is merely a suggestion, and the thread scheduler may choose to ignore it.
+-Use Case: This method can be used to improve the responsiveness of applications where multiple threads are contending for CPU time.
+
+
+5) Daemon Threads
+
+-Definition: Daemon threads are low-priority threads that run in the background and provide support to user threads (also known as non-daemon threads).
+-Behavior: The JVM terminates when only daemon threads are left running, meaning they do not prevent the application from exiting.
+-Example: Common examples of daemon threads are garbage collection threads and background monitoring tasks. You can set a thread as a daemon using the setDaemon(true) method before starting it.
+
+
+6) Thread Groups
+
+-Definition: A thread group is a way to organize multiple threads in Java. It allows you to manage a group of threads as a single entity, making it easier to control their execution.
+-Usage: You can perform operations on all threads in a group, such as starting, stopping, or interrupting them, using methods provided by the ThreadGroup class.
+-Example:
+=======================================================
+ThreadGroup group = new ThreadGroup("MyThreadGroup");
+Thread t1 = new Thread(group, new MyRunnable(), "Thread1");
+Thread t2 = new Thread(group, new MyRunnable(), "Thread2");
+=======================================================
+Java Core, TDD, Streams, Lambdas, JPA/Hibernate, SQL, Build Tools, Git, Web Servers, HTML,Servlets, JSP, Spring Boot etc
+
+
+7) Throwing Exceptions from the run() Method
+
+Behavior: If an exception is thrown from the run() method of a thread and is not caught within that method, it will terminate the thread. The exception will not propagate to the thread that started it; it will simply cause that thread to exit.
