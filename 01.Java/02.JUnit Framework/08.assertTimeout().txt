@@ -1,0 +1,19 @@
+In JUnit, assertTimeout is used to verify that a piece of code completes within a specified time limit. If the code takes longer than the given time limit, the test fails. This is helpful for testing performance, ensuring certain operations execute quickly, and identifying potential bottlenecks.
+
+Example:
+
+===============================
+class ExampleTest_doSmth {
+    @Test
+    void testTimeout(){
+        Example e = new Example();
+
+        assertTimeout(Duration.ofMillis(100), ()->e.doSmth());
+    }
+}
+===============================
+
+It checks whether the operation happend in maximum 100 milliseconds or not. For expressing milliseconds, as you can see, we use "Duration.ofMillis( )" method.
+To express seconds, we can use this method:
+
+"Duration.ofSeconds()"

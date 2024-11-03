@@ -1,0 +1,23 @@
+In Intellij idea which is the code editor and compiler for Java. You will find build systems like Intellij's built-in system, Maven and Grandle. Build system help you automate tasks in your project, like compiling code, running tests and managing libraries.
+
+1. IntelliJ’s Built-in Build System
+
+-What it is: This is the simplest option and is specific to IntelliJ IDEA. It’s built into the IDE, so it’s easy to set up.
+-What it does: It handles compiling your code and running it without extra configuration.
+-Good for: Small or simple projects where you don’t need external libraries or complex configurations.
+
+
+2. Maven
+
+-What it is: Maven is a very popular, widely used build tool for Java projects.
+-What it does: Maven automates dependency management (handling external libraries), compiling, testing, and packaging (creating .jar files, for example) in a standardized way.
+-Special feature: The pom.xml file is a configuration file where you list all libraries and settings. Maven uses this file to download necessary libraries automatically and manage the entire project structure.
+-Good for: Larger projects, or projects with many libraries and specific configurations. It’s also ideal for teams, as Maven promotes a standard structure and workflow across projects.
+
+
+3. Grandle
+
+-What it is: Gradle is another advanced build system, similar to Maven but newer and more flexible.
+-What it does: Like Maven, Gradle manages dependencies and automates builds, but it’s known for being faster and more customizable.
+-Special feature: It uses a simpler scripting language (Groovy or Kotlin) instead of XML (used in Maven). This allows for more customization in how builds are run.
+-Good for: Projects that need a lot of customization or have complex requirements. Gradle is common in Android development because of its flexibility and performance.
