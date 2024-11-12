@@ -1,0 +1,28 @@
+JDBC (Java Database Connectivity) is an API in Java that enables applications to connect to and interact with databases. It provides a standardized way for Java programs to execute SQL queries, retrieve and update data, and manage database connections, making it an essential tool for any Java developer working with databases.
+
+How to use JDBC?
+
+For that, we have 7 levels:
+
+1. We need to import specific package.
+
+2. We need to load and register to JDBC Driver
+
+3. We should establish the connection 
+
+4. We should create the statement 
+
+5. Execute the query 
+
+6. Process the result
+
+7. Close recources
+
+
+--------------------
+
+What is Driver?
+
+A JDBC driver is a set of classes and interfaces that allow Java applications to interact with databases. It acts as a translator between Java applications and the specific database, enabling communication between the two.
+
+
