@@ -1,0 +1,28 @@
+In SQL, there are different categories of operations that can be classified based on their functionality. These are typically divided into DDL, DML, and DQL (or DRL). Here's a breakdown:
+
+
+
+1. DDL (Data Definition Language)
+
+DDL deals with the structure (schema) of the database. These commands are used to define and manage database objects such as tables, indexes, and schemas.
+
+Some keywords in DDL: 
+CREATE, ALTER, DROP, TRUNCATE.
+
+
+
+2. DML (Data Manipulation Language)
+
+DML is used to manage and manipulate data within tables. It allows users to perform CRUD operations: Create, Read, Update, and Delete.
+
+Some keywords in DDL: 
+SELECT, INSERT, UPDATE, DELETE.
+
+
+
+3. DQL (Data Query Language) / DRL (Data Retrieval Language)
+
+DQL (or DRL) is a subset of SQL that deals with querying and retrieving data. Technically, DQL is a part of DML, but it's often treated separately because it's focused on retrieval operations.
+
+Some keywords in DDL: 
+SELECT

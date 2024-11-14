@@ -1,0 +1,93 @@
+We can imagine databases as directories and tables as files inside it. 
+Tables can have multiple rows and columns.
+
+While creating tables, we also create its columns.
+
+We can create table like that:
+
+
+===================================
+USE myDB;
+
+CREATE TABLE exampleTable (
+	column_1 INT,
+    column_2 INT,
+    column_3 VARCHAR(20),
+    column_4 DECIMAL(10, 4),
+    column_5 CHAR,
+    column_6 DATE,
+    column_7 FLOAT,
+    column_8 DOUBLE
+);
+===================================
+
+We can rename table like that:
+
+"rename table exampleTable to JustTable;"
+
+
+If we want to select the columns of the table and print them, we can use this:
+
+
+===================================
+USE myDB;
+
+SELECT * FROM JustTable;
+===================================
+
+Here all the columns will be printed because of "*". However, if we want to specify some columns to print we can write their names like that:
+
+===================================
+USE myDB;
+
+SELECT column_1, column_2 FROM JustTable;
+===================================
+
+
+To be able to remove tables we use similar method to databases:
+
+"DROP TABLE table_name"
+
+
+-------------------------------------------
+
+We can add other columns to a table even after initializing it:
+
+======================================
+USE myDB;
+
+ALTER TABLE JustTable 
+ADD newColumn VARCHAR(30); 
+======================================
+
+
+Using "alter" method we can also rename existing column:
+
+======================================
+USE myDB;
+
+ALTER TABLE JustTable 
+RENAME COLUMN newColumn TO NEW__COLUMN;	
+======================================
+Here COLUMN is keyword.
+
+
+
+
+We can use ALTER keyword to change data type of the columns. For this, we use "MODIFY" keyword.
+
+======================================
+USE myDB;
+
+ALTER TABLE JustTable 
+MODIFY COLUMN column_1 FLOAT;
+======================================
+
+
+-----------------------------
+
+If we want to see describtion of the table, we can use "DESCRIBE" keyword:
+
+DESCRIBE table_name;
+
+

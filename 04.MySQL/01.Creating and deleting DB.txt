@@ -1,0 +1,23 @@
+To be able to create a new database, we should use this command:
+
+"CREATE DATABASE new_db_name;"
+
+
+If we want to remove a database, we should use this command:
+
+"DROP DATABASE database_name;"
+
+
+We might have multiple databases, to choose which of them we want to work, we need to use this command:
+
+"USE database_name;"
+
+
+------------------------
+
+If we want to make the database read only, we can use this command:
+
+"ALTER DATABASEE db_name READ ONLY = 1".
+
+To revert it to be modifiable, we can replace "1" with "0" here.
+

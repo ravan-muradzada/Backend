@@ -1,0 +1,11 @@
+Imagine we have a table with these three columns: first_name, age, second_name.
+
+
+If we want to insert values to the table, we can write these: 
+
+=====================================
+USE myDB;
+
+INSERT INTO PeopleInfo VALUES ("AAA", 21, "aaa");
+INSERT INTO PeopleInfo VALUES ("BBB", 23, "bbb");
+=====================================
