@@ -1,0 +1,45 @@
+Aggregate functions in SQL are used to perform calculations on a set of values and return a single result. These functions are especially useful when you need to summarize, group, or analyze data from multiple rows in a database.
+
+There are some popular aggregate functions which we need to know:
+
+1) COUNT(*)
+It helps us to print the count of rows:
+"SELECT COUNT(*) FROM employees;"
+
+
+2) SUM(): Adds up the values in a numeric column. It's typically used to calculate totals.
+"SELECT SUM(salary) FROM employees;"
+
+
+3) AVG(): Calculates the average value of a numeric column. It's often used to find the mean of a set of values, such as the average age of employees.
+"SELECT AVG(salary) FROM employees;"
+
+
+4) MAX(): Returns the maximum value in a column. It's useful for finding the highest value in a set, such as the maximum price or highest score.
+"SELECT MAX(salary) FROM employees;"
+
+
+5) MIN(): Returns the minimum value in a column. It's often used to find the lowest value in a dataset, such as the minimum order amount or the lowest grade.
+"SELECT MIN(salary) FROM employees;"
+
+
+-------------------------------------------
+
+
+In SQL, an alias is used to give a temporary name to a table or a column for the duration of a query. This can make your queries more readable and simplify complex expressions.
+
+Types of Aliases:
+
+-Column Alias: Used to give a temporary name to a column in the result set:
+
+    "SELECT column_name AS alias_name FROM table_name;"
+
+    "SELECT first_name AS "Employee Name" FROM employees;"
+
+
+
+-Table Alias: Used to give a temporary name to a table in the query, often to simplify the query or make it shorter, especially when dealing with joins:
+
+    "SELECT first_name AS "Employee Name" FROM employees;"
+
+    "SELECT e.first_name, e.last_name FROM employees AS e;"

@@ -1,0 +1,20 @@
+The ORDER BY clause in SQL is used to sort the result set of a query by one or more columns. It helps you arrange your data in a specific order, either ascending or descending. The default sorting order is ascending (ASC), but you can specify descending order using DESC.
+
+
+1. Sorts by One Column: You can order your result by a single column.
+
+"SELECT first_name, last_name
+FROM employees
+ORDER BY first_name;"
+
+
+2. Sorts by Multiple Columns: You can specify multiple columns for sorting. If the first column has identical values, the sorting will proceed to the next column.
+
+"SELECT first_name, last_name, salary
+FROM employees
+ORDER BY last_name, salary DESC;"
+
+-----------------------------------------
+
+Null Values: In most databases, NULL values are sorted last by default in ascending order and first in descending order. However, this behavior can vary, and you can specify how to handle NULLs with additional options in some databases.
+

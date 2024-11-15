@@ -1,0 +1,33 @@
+The DELETE statement in SQL is used to remove records from a table. It's a Data Manipulation Language (DML) command and is often used when you want to delete specific rows based on a condition.
+
+If we want to delete all contents of the table, we can use it like that:
+
+"DELETE FROM Table_name;"
+
+
+However, it is possible to delete some specific contents from the tables using "WHERE" keyword.
+
+Imagine in the People table, there is a column called "age" and we want to delete all information about the people who have age more than 40.
+We can use this command for that:
+
+"DELETE FROM People WHERE age>40;"
+
+After delete statement we can use "ROLLBACK" to retrieve deleted things.
+
+------------------------------------------
+
+The TRUNCATE statement in SQL is used to delete all rows from a table, but it does so much more efficiently than DELETE because it does not log individual row deletions and typically does not fire triggers (depending on the DBMS). The table structure, along with its columns, constraints, and indexes, remains intact.
+
+We cannot use WHERE keyword with TRUNCATE.
+We cannot use ROLLBACK after deleting the things in the table using TRUNCATE keyword.
+
+------------------------------------------
+
+The DROP statement in SQL is used to completely remove a database object, such as a table, database, or view, from the system. Unlike TRUNCATE or DELETE, which only remove data but keep the structure, DROP removes both the data and the structure (the table or database itself).
+
+We cannot use WHERE or ROLLBACK keywords with DROP keyword.
+
+To drop table: "DROP TABLE table_name"
+
+To drop database: "DROP DATABAS database_name"
+

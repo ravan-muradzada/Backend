@@ -1,0 +1,22 @@
+What is a Transaction in SQL?
+
+A transaction in SQL is a sequence of one or more SQL operations (such as INSERT, UPDATE, DELETE) that are executed as a single unit of work. It ensures that a series of database operations are treated as a whole, meaning they either all succeed or, if something goes wrong, they can all be undone.
+
+--------------------------------------
+
+What is COMMIT?
+
+In SQL, COMMIT is a command that makes all changes made during the current transaction permanent in the database. Once you commit a transaction, the changes are saved, and the transaction is considered complete.
+
+
+What is ROLLBACK?
+
+ROLLBACK: If any error occurs during the transaction (e.g., a constraint violation, such as an insufficient balance or invalid account), the ROLLBACK command will undo all changes that were made in that transaction, ensuring the database remains in its original, consistent state.
+
+--------------------------------------
+
+Imagine it like that, we create a virtual enviroment and make changes on it and at the last, if we want to make it permanent in SQL, we use COMMIT keyword and after that changes are saved.
+However, if we do not want to save changes and roll back, we use ROLLBACK keyword.
+
+To start our virtual enviroment, we use BEGIN keyword.
+
