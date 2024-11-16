@@ -1,0 +1,59 @@
+Another main thing we can do with databases is inserting values to its tables. We can do it using Java language.
+
+The steps for inserting process are the similar to fetching.
+
+
+
+1. We need to import the package (java.sql.*).
+
+
+
+2. We need to load and register using the same instruction. (com.mysql.cj.jdbc.Driver)
+
+
+
+3. Moreover, we create a connection like in fetching, using Connection interface and getConnection(...) method.
+
+
+
+4. The next step is creating a statement. This part is a little bit different.
+So here we use PreparedStatement interface and prepareStatement(query) of Connection interface.
+
+To write query, we use ? marks instead of the values, such as:
+
+String query = "INSERT INTO students VALUES (?,?)";  
+
+It is like format specifier and we put the specific value to them after creating PreparedStatement object.
+We use setInt() for intergers, setString() for Strings here.
+Its syntax is like that:
+
+pst.setInt(1, newUser_id); // For the first ?
+pst.setString(2, newUser_name); // For the second ?
+
+Here the first argument shows the place of ?. If we want to specify value for the first ?, we use 1.
+
+
+
+5. Now we should execute the statement, for that we use executeUpdate() method of PreparedStatement interface.
+
+
+
+6. The query inserts the values we mentioned and then returns us the number of row/s affected. We can keep its value in the int variable:
+
+int countOfRowsAffected = pst.executeUpdate();
+[We also use .executeUpdate() when we need to delete any row from the table.]
+
+
+7. After all we should close Connection and PreparedStatement objects:
+
+con.close();
+pst.close();
+
+----------------------------------------------------
+
+I have created an example code for inserting values to db table.
+In this example table, there are two columns:
+
+id INT,
+name VARCHAR(20).
+
