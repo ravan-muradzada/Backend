@@ -1,0 +1,16 @@
+A Servlet Container (also known as a Servlet Engine) is a part of a web server or application server that manages and runs Servlets. It handles requests and responses, manages the lifecycle of Servlets, and provides a runtime environment for them.
+
+Key Functions of a Servlet Container:
+
+-Request Handling: It receives HTTP requests from the client (browser) and forwards them to the appropriate Servlet.
+-Servlet Lifecycle Management: It creates, initializes, and destroys Servlets as needed.
+-Response Handling: After processing the request, it sends the response back to the client.
+-Session Management: It manages sessions, cookies, and state between requests.
+
+----------------------------------
+
+What is Tomcat?
+
+Apache Tomcat is a free, open-source web server and servlet container. It’s used to run Java web applications, including Servlets and JSP (JavaServer Pages).
+
+
