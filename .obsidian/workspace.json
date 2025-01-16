@@ -1,0 +1,205 @@
+{
+  "main": {
+    "id": "ffb9904e95eb8087",
+    "type": "split",
+    "children": [
+      {
+        "id": "7d0748c84087cad0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "28e994a4a863a8bc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "01.Javascript/02.Node.js/06.MongoDB Usage and CRUD operations/07.Object ID.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "07.Object ID"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "68821cc83fb390bd",
+    "type": "split",
+    "children": [
+      {
+        "id": "a66be561db7e0f37",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "62dc6670d419cccc",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "799e674f1124fc98",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#jdbc",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "ac29979b028d5cc4",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "884c337d3e5ff53f",
+    "type": "split",
+    "children": [
+      {
+        "id": "bfa5679dd03af62b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "deddb2f83ea4515c",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {},
+              "icon": "lucide-list",
+              "title": "Outline"
+            }
+          },
+          {
+            "id": "5b91146a7fc67d47",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "06.Linux/Os/05.File Systems.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for 05.File Systems"
+            }
+          },
+          {
+            "id": "3b941fb7459e4f26",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "06.Linux/Os/05.File Systems.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from 05.File Systems"
+            }
+          },
+          {
+            "id": "f2942c609f231c48",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "templates:Insert template": false,
+      "daily-notes:Open today's daily note": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "62dc6670d419cccc",
+  "lastOpenFiles": [
+    "Archieve/Extra(Java)/07.Example Projects/Login using Servlet and JSP/Servlets/LogoutServlet.java.md",
+    "Archieve/Extra(Java)/07.Example Projects/Login using Servlet and JSP/Servlets/LoginServlet.java.md",
+    "Archieve/Extra(Java)/07.Example Projects/Login using Servlet and JSP/JSP/welcome.jsp.md",
+    "Archieve/Extra(Java)/07.Example Projects/Login using Servlet and JSP/JSP/videos.jsp.md",
+    "Archieve/Extra(Java)/07.Example Projects/Login using Servlet and JSP/JSP/login.jsp.md",
+    "Archieve/Extra(Java)/07.Example Projects/Login using Servlet and JSP/Servlets",
+    "Archieve/Extra(Java)/07.Example Projects/Login using Servlet and JSP/JSP",
+    "Archieve/Extra(Java)/07.Example Projects/Login using Servlet and JSP/DAO.java.md",
+    "Archieve/Extra(Java)/07.Example Projects/Login using Servlet and JSP",
+    "Archieve/Extra(Java)/07.Example Projects",
+    "Archieve/Extra(Java)/01.Java/04.Servlet and JSP/02.JSP/07.05.JSTL Functional Tags.md",
+    "Archieve/Extra(Java)/01.Java/04.Servlet and JSP/02.JSP/07.04.JSTL SQL Tags.md",
+    "Archieve/Extra(Java)/01.Java/04.Servlet and JSP/02.JSP/07.02.JSTL Core Tags.md",
+    "Archieve/Extra(Java)/01.Java/04.Servlet and JSP/02.JSP/07.01.What is JSTL?.md",
+    "Archieve/Extra(Java)/01.Java/04.Servlet and JSP/02.JSP/06.Servlet and JSP in usage.md",
+    "Archieve/Extra(Java)/01.Java/04.Servlet and JSP/02.JSP/05.Exception Handling in JSP.md",
+    "Archieve/Extra(Java)/01.Java/04.Servlet and JSP/02.JSP/04.Implicit Objects in JSP.md",
+    "Archieve/Extra(Java)/01.Java/04.Servlet and JSP/02.JSP/03.JSP Directive Tag.md",
+    "Archieve/Extra(Java)/01.Java/04.Servlet and JSP/02.JSP/02.Tags in JSP.md",
+    "Archieve/Extra(Java)/01.Java/04.Servlet and JSP/02.JSP/01.What is JSP?.md",
+    "Archieve/Extra(Java)/01.Java/04.Servlet and JSP/01.Servlet/10.Servlet Annotation Configuration.md",
+    "Archieve/Extra(Java)/01.Java/04.Servlet and JSP/01.Servlet/09.ServletConfig and ServletContext.md",
+    "Archieve/Extra(Java)/01.Java/04.Servlet and JSP/01.Servlet/08.HTTP Session and Cookies.md",
+    "Archieve/Extra(Java)/01.Java/04.Servlet and JSP/01.Servlet/07.URL Rewriting and sendRedirect method.md",
+    "Archieve/Extra(Java)/01.Java/04.Servlet and JSP/01.Servlet/06.Servlet Dispatching.md",
+    "Archieve/Extra(Java)/01.Java/04.Servlet and JSP/01.Servlet/05.GET and POST.md",
+    "Archieve/Extra(Java)/01.Java/04.Servlet and JSP/01.Servlet/04.Creating Servlet.md",
+    "Archieve/Extra(Java)/01.Java/04.Servlet and JSP/01.Servlet/03.Servlet Container.md",
+    "Archieve/Extra(Java)/01.Java/04.Servlet and JSP/01.Servlet/02.Static and dynamic web pages.md",
+    "Archieve/Extra(Java)/01.Java/04.Servlet and JSP/01.Servlet/01.What is Servlet?.md",
+    "Archieve/Extra(Java)/01.Java/04.Servlet and JSP/02.JSP",
+    "Archieve/Extra(Java)/01.Java/04.Servlet and JSP/01.Servlet",
+    "Archieve/Extra(Java)/01.Java/04.Servlet and JSP",
+    "Archieve/Extra(Java)/01.Java/05.Hibernate",
+    "Archieve/Extra(Java)/01.Java/03.JDBC",
+    "Archieve/Extra(Java)/01.Java/02.JUnit Framework",
+    "Pasted image 20250112205047.png",
+    "Pasted image 20250112205052.png",
+    "Untitled.canvas"
+  ]
+}
