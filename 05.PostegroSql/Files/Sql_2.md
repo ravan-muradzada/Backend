@@ -57,7 +57,7 @@ The BETWEEN operator is inclusive, meaning it includes the lower_bound and upper
 BETWEEN is also very useful for filtering by date or time ranges.
 Example: (SELECT id, order_date, total_amount
 FROM orders
-WHERE order_date BETWEEN '2024-01-01' AND '2024-12-31'; )
+WHERE order_date BETWEEN '2024-[[01]]-[[01]]' AND '2024-12-31'; )
 This query returns orders placed within the entire year of 2024.
 
 BETWEEN can be used with text values, but it compares the values lexicographically (i.e., based on alphabetical order).
