@@ -1,0 +1,12 @@
+{
+	"nodes":[
+		{"id":"ccd3d1e33bb411da","type":"text","text":"enter just email (post request). The verif code should be sent to this email","x":-733,"y":-369,"width":250,"height":149},
+		{"id":"6799b5b5c99cec03","x":104,"y":-162,"width":256,"height":122,"type":"text","text":"enter verif code, it willl be sent to backend and checked"},
+		{"id":"5e5970eb54dbb812","x":133,"y":196,"width":247,"height":124,"type":"text","text":"user enters other credentials and in backend, his data saved in db."}
+	],
+	"edges":[
+		{"id":"80f15814d4a99d4a","fromNode":"ccd3d1e33bb411da","fromSide":"bottom","toNode":"6799b5b5c99cec03","toSide":"top","label":"redirect to another page\nwhere user will enter verif code"},
+		{"id":"72a50018d6e2f4e2","fromNode":"6799b5b5c99cec03","fromSide":"bottom","toNode":"ccd3d1e33bb411da","toSide":"bottom","label":"if the verif code is wrong,\nsend back to enter email"},
+		{"id":"229d801233cc5370","fromNode":"6799b5b5c99cec03","fromSide":"bottom","toNode":"5e5970eb54dbb812","toSide":"top","label":"if verif code is true, \nuser will enter other credentials"}
+	]
+}
