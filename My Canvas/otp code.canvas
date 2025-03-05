@@ -1,8 +1,8 @@
 {
 	"nodes":[
 		{"id":"ccd3d1e33bb411da","type":"text","text":"enter just email (post request). The verif code should be sent to this email","x":-733,"y":-369,"width":250,"height":149},
-		{"id":"6799b5b5c99cec03","x":104,"y":-162,"width":256,"height":122,"type":"text","text":"enter verif code, it willl be sent to backend and checked"},
-		{"id":"5e5970eb54dbb812","x":133,"y":196,"width":247,"height":124,"type":"text","text":"user enters other credentials and in backend, his data saved in db."}
+		{"id":"6799b5b5c99cec03","type":"text","text":"enter verif code, it willl be sent to backend and checked","x":104,"y":-162,"width":256,"height":122},
+		{"id":"5e5970eb54dbb812","type":"text","text":"user enters other credentials and in backend, his data saved in db.","x":133,"y":196,"width":247,"height":124}
 	],
 	"edges":[
 		{"id":"80f15814d4a99d4a","fromNode":"ccd3d1e33bb411da","fromSide":"bottom","toNode":"6799b5b5c99cec03","toSide":"top","label":"redirect to another page\nwhere user will enter verif code"},
