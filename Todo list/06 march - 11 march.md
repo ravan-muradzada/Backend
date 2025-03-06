@@ -3,4 +3,3 @@
 - [ ] Enrich file upload with basic frontend
 - [ ] Learn the backend of `Remember me`
 - [ ] Learn the backend of signing up/logging in with Google, Facebook and other accounts
-- [ ] 
